@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Nexora conçoit des sites web, tunnels de vente et boutiques en ligne sur mesure.">
+<meta name="description" content="Nexora conçoit des sites internet, tunnels de vente et boutiques en ligne sur mesure.">
 <title>Nexora | Solutions digitales sur mesure</title>
 
 <style>
 :root{
   --black:#070707;
-  --black2:#101010;
-  --gold:#e9ad19;
-  --gold2:#ffc83d;
+  --black2:#111111;
+  --gold:#d9a126;
+  --gold2:#f1bd45;
   --white:#ffffff;
-  --soft:#f6f6f6;
-  --gray:#777;
-  --border:#e8e8e8;
+  --soft:#f7f7f7;
+  --gray:#737373;
+  --border:#e9e9e9;
 }
 
 *{
@@ -31,7 +31,7 @@ html{
 body{
   font-family:Arial,Helvetica,sans-serif;
   color:#171717;
-  background:white;
+  background:#fff;
   line-height:1.6;
 }
 
@@ -43,7 +43,7 @@ body{
 /* HEADER */
 
 header{
-  background:rgba(5,5,5,.98);
+  background:#070707;
   border-bottom:1px solid #242424;
   position:sticky;
   top:0;
@@ -86,8 +86,8 @@ nav a{
 
 .hero{
   background:
-  radial-gradient(circle at 80% 30%,rgba(234,174,28,.15),transparent 30%),
-  linear-gradient(135deg,#050505,#111);
+    radial-gradient(circle at 80% 30%,rgba(217,161,38,.15),transparent 30%),
+    linear-gradient(135deg,#050505,#111);
   color:white;
   min-height:670px;
   display:flex;
@@ -144,8 +144,6 @@ nav a{
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
-  border:none;
-  cursor:pointer;
   font-size:15px;
 }
 
@@ -193,6 +191,17 @@ nav a{
   font-size:14px;
 }
 
+/* LOGO ENTRE LES SECTIONS */
+
+.section-logo{
+  width:190px;
+  max-width:60%;
+  height:auto;
+  display:block;
+  margin:0 auto 28px;
+  border-radius:10px;
+}
+
 /* INTRO */
 
 .intro{
@@ -235,23 +244,22 @@ nav a{
 
 .service{
   border:1px solid var(--border);
-  padding:38px 32px;
-  border-radius:16px;
+  padding:0 32px 38px;
+  border-radius:18px;
   background:#fff;
+  overflow:hidden;
   box-shadow:0 12px 35px rgba(0,0,0,.05);
 }
 
-.service-number{
-  width:47px;
-  height:47px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:10px;
-  background:#fff7df;
-  color:#b87800;
-  font-weight:800;
-  margin-bottom:28px;
+/* IMAGES DES 3 SERVICES */
+
+.service-image{
+  width:calc(100% + 64px);
+  height:190px;
+  margin-left:-32px;
+  margin-bottom:30px;
+  object-fit:cover;
+  display:block;
 }
 
 .service h3{
@@ -374,7 +382,7 @@ nav a{
   font-size:14px;
 }
 
-/* FORM */
+/* FORMULAIRE */
 
 .order{
   background:#f6f6f6;
@@ -505,7 +513,7 @@ footer h4{
   font-size:13px;
 }
 
-/* MOBILE */
+/* TELEPHONE */
 
 @media(max-width:850px){
 
@@ -533,6 +541,10 @@ footer h4{
 
   .service-grid{
     grid-template-columns:1fr;
+  }
+
+  .service-image{
+    height:220px;
   }
 
   .steps{
@@ -579,6 +591,14 @@ footer h4{
   .form-card{
     padding:25px 18px;
   }
+
+  .service-image{
+    height:185px;
+  }
+
+  .section-logo{
+    width:155px;
+  }
 }
 </style>
 </head>
@@ -596,7 +616,7 @@ footer h4{
       <a href="#accueil">Accueil</a>
       <a href="#services">Services</a>
       <a href="#fonctionnement">Fonctionnement</a>
-      <a href="#commander" class="nav-button">Démarrer un projet</a>
+      <a href="#commander" class="nav-button">Expliquer mon projet</a>
     </nav>
 
   </div>
@@ -605,10 +625,13 @@ footer h4{
 
 <main>
 
+<!-- ACCUEIL -->
+
 <section class="hero" id="accueil">
   <div class="container hero-grid">
 
     <div>
+
       <span class="badge">AGENCE DIGITALE • NEXORA</span>
 
       <h1>
@@ -622,35 +645,52 @@ footer h4{
       </p>
 
       <div class="buttons">
+
         <a href="#commander" class="btn btn-gold">
-          Démarrer mon projet
+          Expliquer mon projet
         </a>
 
         <a href="#services" class="btn btn-dark">
           Découvrir nos services
         </a>
+
       </div>
+
     </div>
 
+
     <div class="hero-panel">
+
       <img src="logo-nexora.jpg" alt="Logo Nexora">
 
       <div class="hero-panel-text">
         <strong>Votre vision. Notre expertise.</strong>
         <span>Une solution digitale pensée autour de votre projet.</span>
       </div>
+
     </div>
 
   </div>
 </section>
 
 
+<!-- NOS EXPERTISES -->
+
 <section class="intro" id="services">
+
   <div class="container">
+
+    <img
+      src="logo-nexora.jpg"
+      alt="Nexora"
+      class="section-logo"
+    >
 
     <span class="eyebrow">Nos expertises</span>
 
-    <h2>Une solution adaptée à chaque ambition.</h2>
+    <h2>
+      Une solution adaptée à chaque ambition.
+    </h2>
 
     <p>
       Que votre objectif soit de présenter votre entreprise, vendre vos
@@ -659,15 +699,26 @@ footer h4{
     </p>
 
   </div>
+
 </section>
 
 
+<!-- LES 3 SERVICES -->
+
 <section class="services">
+
   <div class="container service-grid">
+
+
+    <!-- SITE INTERNET -->
 
     <article class="service">
 
-      <div class="service-number">01</div>
+      <img
+        src="site-internet.png"
+        alt="Création de sites internet"
+        class="service-image"
+      >
 
       <h3>Sites internet</h3>
 
@@ -686,9 +737,15 @@ footer h4{
     </article>
 
 
+    <!-- TUNNEL DE VENTE -->
+
     <article class="service">
 
-      <div class="service-number">02</div>
+      <img
+        src="tunnel-vente.png"
+        alt="Création de tunnels de vente"
+        class="service-image"
+      >
 
       <h3>Tunnels de vente</h3>
 
@@ -707,9 +764,15 @@ footer h4{
     </article>
 
 
+    <!-- BOUTIQUE -->
+
     <article class="service">
 
-      <div class="service-number">03</div>
+      <img
+        src="boutique-en-ligne.png"
+        alt="Création de boutiques en ligne"
+        class="service-image"
+      >
 
       <h3>Boutiques en ligne</h3>
 
@@ -722,16 +785,21 @@ footer h4{
         <li>Catalogue produits</li>
         <li>Fiches produits</li>
         <li>Gestion des commandes</li>
-        <li>Paiement à intégrer selon le projet</li>
+        <li>Paiement selon le projet</li>
       </ul>
 
     </article>
 
+
   </div>
+
 </section>
 
 
+<!-- FONCTIONNEMENT -->
+
 <section class="process" id="fonctionnement">
+
   <div class="container">
 
     <div class="process-top">
@@ -753,49 +821,78 @@ footer h4{
     <div class="steps">
 
       <div class="step">
+
         <span>ÉTAPE 01</span>
+
         <h3>Votre demande</h3>
+
         <p>
           Vous décrivez votre activité, vos objectifs et la solution souhaitée.
         </p>
+
       </div>
 
+
       <div class="step">
+
         <span>ÉTAPE 02</span>
+
         <h3>Analyse</h3>
+
         <p>
           Nous étudions votre projet afin d'identifier les besoins essentiels.
         </p>
+
       </div>
 
+
       <div class="step">
+
         <span>ÉTAPE 03</span>
+
         <h3>Proposition</h3>
+
         <p>
           Une solution adaptée, un délai et les prochaines étapes vous sont proposés.
         </p>
+
       </div>
 
+
       <div class="step">
+
         <span>ÉTAPE 04</span>
+
         <h3>Réalisation</h3>
+
         <p>
           Votre projet est construit puis préparé pour sa mise en ligne.
         </p>
+
       </div>
 
     </div>
 
   </div>
+
 </section>
 
 
+<!-- POURQUOI NEXORA -->
+
 <section class="why">
+
   <div class="container why-grid">
 
     <div class="why-box">
-      <img src="logo-nexora.jpg" alt="Nexora">
+
+      <img
+        src="logo-nexora.jpg"
+        alt="Nexora"
+      >
+
     </div>
+
 
     <div>
 
@@ -805,27 +902,42 @@ footer h4{
         Votre projet mérite plus qu'un simple site.
       </h2>
 
+
       <div class="reasons">
 
         <div class="reason">
+
           <strong>Conception sur mesure</strong>
+
           <p>
-            Nous partons de vos besoins et de vos objectifs plutôt que d'une solution identique pour tout le monde.
+            Nous partons de vos besoins et de vos objectifs plutôt que
+            d'une solution identique pour tout le monde.
           </p>
+
         </div>
 
+
         <div class="reason">
+
           <strong>Design professionnel</strong>
+
           <p>
-            Une présentation claire et moderne adaptée aux ordinateurs, tablettes et smartphones.
+            Une présentation claire et moderne adaptée aux ordinateurs,
+            tablettes et smartphones.
           </p>
+
         </div>
 
+
         <div class="reason">
+
           <strong>Accompagnement du projet</strong>
+
           <p>
-            Votre demande est étudiée avant la réalisation afin de construire une solution cohérente.
+            Votre demande est étudiée avant la réalisation afin de
+            construire une solution cohérente.
           </p>
+
         </div>
 
       </div>
@@ -833,8 +945,11 @@ footer h4{
     </div>
 
   </div>
+
 </section>
 
+
+<!-- VOTRE PROJET -->
 
 <section class="order" id="commander">
 
@@ -842,14 +957,23 @@ footer h4{
 
     <div class="order-head">
 
-      <span class="eyebrow">Votre projet</span>
+      <img
+        src="logo-nexora.jpg"
+        alt="Nexora"
+        class="section-logo"
+      >
+
+      <span class="eyebrow">
+        Votre projet
+      </span>
 
       <h2 class="section-title">
         Parlez-nous de ce que vous voulez créer.
       </h2>
 
       <p>
-        Plus votre description est précise, mieux nous pourrons comprendre votre besoin.
+        Expliquez votre projet en détail afin que nous puissions
+        comprendre précisément vos besoins.
       </p>
 
     </div>
@@ -859,164 +983,345 @@ footer h4{
 
       <div class="form-grid">
 
-        <div>
-          <label for="nom">Nom et prénom *</label>
-          <input id="nom" type="text" required>
-        </div>
 
         <div>
-          <label for="entreprise">Entreprise</label>
-          <input id="entreprise" type="text">
+
+          <label for="nom">
+            Nom et prénom *
+          </label>
+
+          <input
+            id="nom"
+            type="text"
+            required
+          >
+
         </div>
 
-        <div>
-          <label for="telephone">WhatsApp / Téléphone *</label>
-          <input id="telephone" type="tel" required>
-        </div>
 
         <div>
-          <label for="email">Adresse e-mail *</label>
-          <input id="email" type="email" required>
+
+          <label for="entreprise">
+            Entreprise
+          </label>
+
+          <input
+            id="entreprise"
+            type="text"
+          >
+
         </div>
+
+
+        <div>
+
+          <label for="telephone">
+            WhatsApp / Téléphone *
+          </label>
+
+          <input
+            id="telephone"
+            type="tel"
+            required
+          >
+
+        </div>
+
+
+        <div>
+
+          <label for="email">
+            Adresse e-mail *
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            required
+          >
+
+        </div>
+
 
         <div class="full">
-          <label for="service">Quel service souhaitez-vous ? *</label>
+
+          <label for="service">
+            Que souhaitez-vous créer ? *
+          </label>
 
           <select id="service" required>
-            <option value="">Sélectionnez votre projet</option>
-            <option>Site internet</option>
-            <option>Tunnel de vente</option>
-            <option>Boutique en ligne</option>
+
+            <option value="">
+              Sélectionnez votre projet
+            </option>
+
+            <option>
+              Site internet
+            </option>
+
+            <option>
+              Tunnel de vente
+            </option>
+
+            <option>
+              Boutique en ligne
+            </option>
+
           </select>
+
         </div>
 
+
         <div class="full">
-          <label for="objectif">Quel est votre objectif principal ? *</label>
+
+          <label for="objectif">
+            Quel est votre objectif principal ? *
+          </label>
 
           <textarea
             id="objectif"
             placeholder="Exemple : présenter mon entreprise, vendre mes produits, obtenir davantage de clients..."
-            required></textarea>
+            required
+          ></textarea>
+
         </div>
 
+
         <div class="full">
-          <label for="description">Décrivez votre projet en détail *</label>
+
+          <label for="description">
+            Expliquez votre projet en détail *
+          </label>
 
           <textarea
             id="description"
-            placeholder="Décrivez les pages, fonctionnalités, produits, services et tout autre élément important..."
-            required></textarea>
+            placeholder="Expliquez les pages souhaitées, les fonctionnalités, vos produits ou services et tout autre élément important..."
+            required
+          ></textarea>
+
         </div>
 
+
         <div>
-          <label for="identite">Logo / identité visuelle</label>
+
+          <label for="identite">
+            Logo / identité visuelle
+          </label>
 
           <select id="identite">
-            <option>J'ai déjà tout</option>
-            <option>J'ai seulement un logo</option>
-            <option>Je n'en ai pas encore</option>
+
+            <option>
+              J'ai déjà tout
+            </option>
+
+            <option>
+              J'ai seulement un logo
+            </option>
+
+            <option>
+              Je n'en ai pas encore
+            </option>
+
           </select>
+
         </div>
+
 
         <div>
-          <label for="budget">Budget prévu</label>
+
+          <label for="budget">
+            Budget prévu
+          </label>
 
           <select id="budget">
-            <option>À discuter</option>
-            <option>Moins de 100 000 F CFA</option>
-            <option>100 000 – 250 000 F CFA</option>
-            <option>250 000 – 500 000 F CFA</option>
-            <option>500 000 – 1 000 000 F CFA</option>
-            <option>Plus de 1 000 000 F CFA</option>
+
+            <option>
+              À discuter
+            </option>
+
+            <option>
+              Moins de 100 000 F CFA
+            </option>
+
+            <option>
+              100 000 – 250 000 F CFA
+            </option>
+
+            <option>
+              250 000 – 500 000 F CFA
+            </option>
+
+            <option>
+              500 000 – 1 000 000 F CFA
+            </option>
+
+            <option>
+              Plus de 1 000 000 F CFA
+            </option>
+
           </select>
+
         </div>
 
+
         <div class="full">
-          <label for="delai">Quand souhaitez-vous lancer votre projet ?</label>
+
+          <label for="delai">
+            Quand souhaitez-vous lancer votre projet ?
+          </label>
 
           <select id="delai">
-            <option>Dès que possible</option>
-            <option>Dans moins de 2 semaines</option>
-            <option>Dans 1 mois</option>
-            <option>Dans 2 à 3 mois</option>
-            <option>Je n'ai pas encore décidé</option>
+
+            <option>
+              Dès que possible
+            </option>
+
+            <option>
+              Dans moins de 2 semaines
+            </option>
+
+            <option>
+              Dans 1 mois
+            </option>
+
+            <option>
+              Dans 2 à 3 mois
+            </option>
+
+            <option>
+              Je n'ai pas encore décidé
+            </option>
+
           </select>
+
         </div>
 
+
         <div class="full">
-          <button type="submit" class="submit">
+
+          <button
+            type="submit"
+            class="submit"
+          >
             Envoyer ma demande
           </button>
 
           <p class="form-note">
             Aucun paiement ne vous sera demandé à cette étape.
           </p>
+
         </div>
+
 
       </div>
 
     </form>
 
   </div>
+
 </section>
 
 </main>
 
 
+<!-- FOOTER -->
+
 <footer>
+
   <div class="container">
 
     <div class="footer-grid">
 
       <div>
-        <img class="footer-logo" src="logo-nexora.jpg" alt="Nexora">
+
+        <img
+          class="footer-logo"
+          src="logo-nexora.jpg"
+          alt="Nexora"
+        >
 
         <p>
           Création de solutions digitales sur mesure pour entrepreneurs,
           professionnels et entreprises.
         </p>
+
       </div>
 
+
       <div>
+
         <h4>Services</h4>
 
         <div class="footer-links">
-          <a href="#services">Sites internet</a>
-          <a href="#services">Tunnels de vente</a>
-          <a href="#services">Boutiques en ligne</a>
+
+          <a href="#services">
+            Sites internet
+          </a>
+
+          <a href="#services">
+            Tunnels de vente
+          </a>
+
+          <a href="#services">
+            Boutiques en ligne
+          </a>
+
         </div>
+
       </div>
 
+
       <div>
+
         <h4>Nexora</h4>
 
         <div class="footer-links">
-          <a href="#fonctionnement">Notre méthode</a>
-          <a href="#commander">Démarrer un projet</a>
+
+          <a href="#fonctionnement">
+            Notre méthode
+          </a>
+
+          <a href="#commander">
+            Expliquer mon projet
+          </a>
+
         </div>
+
       </div>
 
     </div>
+
 
     <div class="copyright">
       © 2026 Nexora — Tous droits réservés.
     </div>
 
   </div>
+
 </footer>
 
 
 <script>
-document.getElementById("projectForm").addEventListener("submit", function(e){
+
+document
+.getElementById("projectForm")
+.addEventListener("submit",function(e){
+
   e.preventDefault();
 
-  const nom = document.getElementById("nom").value.trim();
+  const nom =
+  document
+  .getElementById("nom")
+  .value
+  .trim();
 
   alert(
     "Merci " + nom +
-    ". Votre demande est prête. La réception automatique des commandes sera connectée à l'étape suivante."
+    ". Votre demande est prête. La réception automatique sera connectée à l'étape suivante."
   );
+
 });
+
 </script>
 
 </body>
