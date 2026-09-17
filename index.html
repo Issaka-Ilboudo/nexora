@@ -251,8 +251,6 @@ nav a{
   box-shadow:0 12px 35px rgba(0,0,0,.05);
 }
 
-/* IMAGES DES 3 SERVICES */
-
 .service-image{
   width:calc(100% + 64px);
   height:190px;
@@ -462,6 +460,11 @@ textarea{
   margin-top:10px;
 }
 
+.submit:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+}
+
 .form-note{
   text-align:center;
   color:#888;
@@ -622,7 +625,6 @@ footer h4{
   </div>
 </header>
 
-
 <main>
 
 <!-- ACCUEIL -->
@@ -658,7 +660,6 @@ footer h4{
 
     </div>
 
-
     <div class="hero-panel">
 
       <img src="logo-nexora.jpg" alt="Logo Nexora">
@@ -673,18 +674,13 @@ footer h4{
   </div>
 </section>
 
-
 <!-- NOS EXPERTISES -->
 
 <section class="intro" id="services">
 
   <div class="container">
 
-    <img
-      src="logo-nexora.jpg"
-      alt="Nexora"
-      class="section-logo"
-    >
+    <img src="logo-nexora.jpg" alt="Nexora" class="section-logo">
 
     <span class="eyebrow">Nos expertises</span>
 
@@ -702,13 +698,11 @@ footer h4{
 
 </section>
 
-
 <!-- LES 3 SERVICES -->
 
 <section class="services">
 
   <div class="container service-grid">
-
 
     <!-- SITE INTERNET -->
 
@@ -736,7 +730,6 @@ footer h4{
 
     </article>
 
-
     <!-- TUNNEL DE VENTE -->
 
     <article class="service">
@@ -762,7 +755,6 @@ footer h4{
       </ul>
 
     </article>
-
 
     <!-- BOUTIQUE -->
 
@@ -790,11 +782,9 @@ footer h4{
 
     </article>
 
-
   </div>
 
 </section>
-
 
 <!-- FONCTIONNEMENT -->
 
@@ -817,58 +807,38 @@ footer h4{
 
     </div>
 
-
     <div class="steps">
 
       <div class="step">
-
         <span>ÉTAPE 01</span>
-
         <h3>Votre demande</h3>
-
         <p>
           Vous décrivez votre activité, vos objectifs et la solution souhaitée.
         </p>
-
       </div>
 
-
       <div class="step">
-
         <span>ÉTAPE 02</span>
-
         <h3>Analyse</h3>
-
         <p>
           Nous étudions votre projet afin d'identifier les besoins essentiels.
         </p>
-
       </div>
 
-
       <div class="step">
-
         <span>ÉTAPE 03</span>
-
         <h3>Proposition</h3>
-
         <p>
           Une solution adaptée, un délai et les prochaines étapes vous sont proposés.
         </p>
-
       </div>
 
-
       <div class="step">
-
         <span>ÉTAPE 04</span>
-
         <h3>Réalisation</h3>
-
         <p>
           Votre projet est construit puis préparé pour sa mise en ligne.
         </p>
-
       </div>
 
     </div>
@@ -877,7 +847,6 @@ footer h4{
 
 </section>
 
-
 <!-- POURQUOI NEXORA -->
 
 <section class="why">
@@ -885,14 +854,8 @@ footer h4{
   <div class="container why-grid">
 
     <div class="why-box">
-
-      <img
-        src="logo-nexora.jpg"
-        alt="Nexora"
-      >
-
+      <img src="logo-nexora.jpg" alt="Nexora">
     </div>
-
 
     <div>
 
@@ -902,42 +865,30 @@ footer h4{
         Votre projet mérite plus qu'un simple site.
       </h2>
 
-
       <div class="reasons">
 
         <div class="reason">
-
           <strong>Conception sur mesure</strong>
-
           <p>
             Nous partons de vos besoins et de vos objectifs plutôt que
             d'une solution identique pour tout le monde.
           </p>
-
         </div>
 
-
         <div class="reason">
-
           <strong>Design professionnel</strong>
-
           <p>
             Une présentation claire et moderne adaptée aux ordinateurs,
             tablettes et smartphones.
           </p>
-
         </div>
 
-
         <div class="reason">
-
           <strong>Accompagnement du projet</strong>
-
           <p>
             Votre demande est étudiée avant la réalisation afin de
             construire une solution cohérente.
           </p>
-
         </div>
 
       </div>
@@ -948,7 +899,6 @@ footer h4{
 
 </section>
 
-
 <!-- VOTRE PROJET -->
 
 <section class="order" id="commander">
@@ -957,15 +907,9 @@ footer h4{
 
     <div class="order-head">
 
-      <img
-        src="logo-nexora.jpg"
-        alt="Nexora"
-        class="section-logo"
-      >
+      <img src="logo-nexora.jpg" alt="Nexora" class="section-logo">
 
-      <span class="eyebrow">
-        Votre projet
-      </span>
+      <span class="eyebrow">Votre projet</span>
 
       <h2 class="section-title">
         Parlez-nous de ce que vous voulez créer.
@@ -978,70 +922,29 @@ footer h4{
 
     </div>
 
-
     <form class="form-card" id="projectForm">
 
       <div class="form-grid">
 
-
         <div>
-
-          <label for="nom">
-            Nom et prénom *
-          </label>
-
-          <input
-            id="nom"
-            type="text"
-            required
-          >
-
+          <label for="nom">Nom et prénom *</label>
+          <input id="nom" type="text" required>
         </div>
 
-
         <div>
-
-          <label for="entreprise">
-            Entreprise
-          </label>
-
-          <input
-            id="entreprise"
-            type="text"
-          >
-
+          <label for="entreprise">Entreprise</label>
+          <input id="entreprise" type="text">
         </div>
 
-
         <div>
-
-          <label for="telephone">
-            WhatsApp / Téléphone *
-          </label>
-
-          <input
-            id="telephone"
-            type="tel"
-            required
-          >
-
+          <label for="telephone">WhatsApp / Téléphone *</label>
+          <input id="telephone" type="tel" required>
         </div>
 
-
         <div>
-
-          <label for="email">
-            Adresse e-mail *
-          </label>
-
-          <input
-            id="email"
-            type="email"
-            required
-          >
-
+          <label for="email">Adresse e-mail *</label>
+          <input id="email" type="email" required>
         </div>
-
 
         <div class="full">
 
@@ -1071,7 +974,6 @@ footer h4{
 
         </div>
 
-
         <div class="full">
 
           <label for="objectif">
@@ -1085,7 +987,6 @@ footer h4{
           ></textarea>
 
         </div>
-
 
         <div class="full">
 
@@ -1101,7 +1002,6 @@ footer h4{
 
         </div>
 
-
         <div>
 
           <label for="identite">
@@ -1109,23 +1009,12 @@ footer h4{
           </label>
 
           <select id="identite">
-
-            <option>
-              J'ai déjà tout
-            </option>
-
-            <option>
-              J'ai seulement un logo
-            </option>
-
-            <option>
-              Je n'en ai pas encore
-            </option>
-
+            <option>J'ai déjà tout</option>
+            <option>J'ai seulement un logo</option>
+            <option>Je n'en ai pas encore</option>
           </select>
 
         </div>
-
 
         <div>
 
@@ -1134,35 +1023,15 @@ footer h4{
           </label>
 
           <select id="budget">
-
-            <option>
-              À discuter
-            </option>
-
-            <option>
-              Moins de 100 000 F CFA
-            </option>
-
-            <option>
-              100 000 – 250 000 F CFA
-            </option>
-
-            <option>
-              250 000 – 500 000 F CFA
-            </option>
-
-            <option>
-              500 000 – 1 000 000 F CFA
-            </option>
-
-            <option>
-              Plus de 1 000 000 F CFA
-            </option>
-
+            <option>À discuter</option>
+            <option>Moins de 100 000 F CFA</option>
+            <option>100 000 – 250 000 F CFA</option>
+            <option>250 000 – 500 000 F CFA</option>
+            <option>500 000 – 1 000 000 F CFA</option>
+            <option>Plus de 1 000 000 F CFA</option>
           </select>
 
         </div>
-
 
         <div class="full">
 
@@ -1171,38 +1040,18 @@ footer h4{
           </label>
 
           <select id="delai">
-
-            <option>
-              Dès que possible
-            </option>
-
-            <option>
-              Dans moins de 2 semaines
-            </option>
-
-            <option>
-              Dans 1 mois
-            </option>
-
-            <option>
-              Dans 2 à 3 mois
-            </option>
-
-            <option>
-              Je n'ai pas encore décidé
-            </option>
-
+            <option>Dès que possible</option>
+            <option>Dans moins de 2 semaines</option>
+            <option>Dans 1 mois</option>
+            <option>Dans 2 à 3 mois</option>
+            <option>Je n'ai pas encore décidé</option>
           </select>
 
         </div>
 
-
         <div class="full">
 
-          <button
-            type="submit"
-            class="submit"
-          >
+          <button type="submit" class="submit">
             Envoyer ma demande
           </button>
 
@@ -1211,7 +1060,6 @@ footer h4{
           </p>
 
         </div>
-
 
       </div>
 
@@ -1222,7 +1070,6 @@ footer h4{
 </section>
 
 </main>
-
 
 <!-- FOOTER -->
 
@@ -1247,50 +1094,30 @@ footer h4{
 
       </div>
 
-
       <div>
 
         <h4>Services</h4>
 
         <div class="footer-links">
-
-          <a href="#services">
-            Sites internet
-          </a>
-
-          <a href="#services">
-            Tunnels de vente
-          </a>
-
-          <a href="#services">
-            Boutiques en ligne
-          </a>
-
+          <a href="#services">Sites internet</a>
+          <a href="#services">Tunnels de vente</a>
+          <a href="#services">Boutiques en ligne</a>
         </div>
 
       </div>
-
 
       <div>
 
         <h4>Nexora</h4>
 
         <div class="footer-links">
-
-          <a href="#fonctionnement">
-            Notre méthode
-          </a>
-
-          <a href="#commander">
-            Expliquer mon projet
-          </a>
-
+          <a href="#fonctionnement">Notre méthode</a>
+          <a href="#commander">Expliquer mon projet</a>
         </div>
 
       </div>
 
     </div>
-
 
     <div class="copyright">
       © 2026 Nexora — Tous droits réservés.
@@ -1300,25 +1127,189 @@ footer h4{
 
 </footer>
 
-
 <script>
 
-document
-.getElementById("projectForm")
-.addEventListener("submit",function(e){
+/* =========================================
+   CONNEXION NEXORA À SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+"https://bfegrpipksefificmgwi.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_E9mw-2Qpyllsh3gOgt_6w_naHoPtGa";
+
+const form =
+document.getElementById("projectForm");
+
+const submitButton =
+form.querySelector(".submit");
+
+
+form.addEventListener(
+"submit",
+async function(e){
 
   e.preventDefault();
 
   const nom =
-  document
-  .getElementById("nom")
-  .value
-  .trim();
+  document.getElementById("nom").value.trim();
 
-  alert(
-    "Merci " + nom +
-    ". Votre demande est prête. La réception automatique sera connectée à l'étape suivante."
-  );
+  const entreprise =
+  document.getElementById("entreprise").value.trim();
+
+  const telephone =
+  document.getElementById("telephone").value.trim();
+
+  const email =
+  document.getElementById("email").value.trim();
+
+  const service =
+  document.getElementById("service").value;
+
+  const objectif =
+  document.getElementById("objectif").value.trim();
+
+  const description =
+  document.getElementById("description").value.trim();
+
+  const identite =
+  document.getElementById("identite").value;
+
+  const budget =
+  document.getElementById("budget").value;
+
+  const delai =
+  document.getElementById("delai").value;
+
+
+  /* NUMÉRO UNIQUE DE LA DEMANDE */
+
+  const numeroDemande =
+  "NX-" +
+  Date.now().toString().slice(-8) +
+  "-" +
+  Math.floor(100 + Math.random() * 900);
+
+
+  submitButton.disabled = true;
+
+  submitButton.textContent =
+  "Envoi en cours...";
+
+
+  try{
+
+    const response =
+    await fetch(
+      SUPABASE_URL + "/rest/v1/Demandes",
+      {
+
+        method:"POST",
+
+        headers:{
+
+          "apikey":
+          SUPABASE_KEY,
+
+          "Authorization":
+          "Bearer " + SUPABASE_KEY,
+
+          "Content-Type":
+          "application/json",
+
+          "Prefer":
+          "return=minimal"
+
+        },
+
+        body:JSON.stringify({
+
+          numero_demande:
+          numeroDemande,
+
+          nom:
+          nom,
+
+          entreprise:
+          entreprise,
+
+          telephone:
+          telephone,
+
+          email:
+          email,
+
+          service:
+          service,
+
+          objectif:
+          objectif,
+
+          description:
+          description,
+
+          identite_logo:
+          identite,
+
+          budget:
+          budget,
+
+          delai:
+          delai,
+
+          statut:
+          "Nouvelle"
+
+        })
+
+      }
+    );
+
+
+    if(!response.ok){
+
+      const erreur =
+      await response.text();
+
+      console.error(
+        "Erreur Supabase :",
+        erreur
+      );
+
+      throw new Error(erreur);
+
+    }
+
+
+    alert(
+      "Merci " + nom + " !\n\n" +
+      "Votre demande a bien été envoyée à Nexora.\n\n" +
+      "Numéro de demande : " +
+      numeroDemande +
+      "\n\nNous étudierons votre projet et vous contacterons prochainement."
+    );
+
+
+    form.reset();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "Votre demande n'a pas pu être envoyée pour le moment.\n\nVeuillez réessayer dans quelques instants."
+    );
+
+  }finally{
+
+    submitButton.disabled = false;
+
+    submitButton.textContent =
+    "Envoyer ma demande";
+
+  }
 
 });
 
