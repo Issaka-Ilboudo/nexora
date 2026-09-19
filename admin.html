@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,15 +7,13 @@
 
 <style>
 :root{
-  --black:#070707;
+  --black:#080808;
   --gold:#d9a126;
-  --gold2:#f1bd45;
-  --white:#ffffff;
+  --white:#fff;
+  --soft:#f5f5f5;
+  --border:#e5e5e5;
   --gray:#777;
-  --border:#e8e8e8;
-  --soft:#f6f6f6;
   --red:#b42318;
-  --green:#16794b;
 }
 
 *{
@@ -27,57 +24,55 @@
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  background:#f5f5f5;
-  color:#171717;
-  min-height:100vh;
+  background:var(--soft);
+  color:#151515;
 }
 
-button,
-input,
-select{
+button,input,select{
   font:inherit;
 }
 
-/* CONNEXION */
+/* =========================
+   CONNEXION
+========================= */
 
 #loginPage{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:30px 20px;
+  align-items:center;
+  padding:25px;
   background:
-    radial-gradient(circle at 80% 20%,rgba(217,161,38,.16),transparent 30%),
-    linear-gradient(135deg,#050505,#111);
+  radial-gradient(circle at 80% 20%,rgba(217,161,38,.16),transparent 30%),
+  linear-gradient(135deg,#050505,#111);
 }
 
 .login-card{
+  background:white;
   width:100%;
   max-width:430px;
-  background:#fff;
-  padding:42px;
+  padding:40px;
   border-radius:20px;
-  box-shadow:0 30px 80px rgba(0,0,0,.35);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
 .login-logo{
-  width:170px;
+  width:160px;
   display:block;
-  margin:0 auto 28px;
+  margin:0 auto 25px;
   border-radius:10px;
 }
 
 .login-card h1{
   text-align:center;
-  font-size:28px;
   margin-bottom:8px;
 }
 
 .login-card > p{
   text-align:center;
   color:#777;
-  margin-bottom:30px;
   font-size:14px;
+  margin-bottom:28px;
 }
 
 .field{
@@ -94,8 +89,8 @@ select{
 .field input{
   width:100%;
   padding:14px;
-  border:1px solid #d7d7d7;
-  border-radius:8px;
+  border:1px solid #ddd;
+  border-radius:9px;
   outline:none;
 }
 
@@ -106,8 +101,8 @@ select{
 .login-button{
   width:100%;
   padding:15px;
-  border:none;
-  border-radius:8px;
+  border:0;
+  border-radius:9px;
   background:#090909;
   color:white;
   font-weight:bold;
@@ -116,21 +111,22 @@ select{
 
 .login-button:disabled{
   opacity:.6;
-  cursor:not-allowed;
 }
 
 #errorMessage{
   display:none;
-  margin-top:16px;
+  margin-top:15px;
+  padding:12px;
   background:#fff0f0;
   color:var(--red);
-  padding:12px;
   border-radius:8px;
   font-size:13px;
   text-align:center;
 }
 
-/* ADMIN */
+/* =========================
+   ADMIN
+========================= */
 
 #adminPage{
   display:none;
@@ -139,22 +135,20 @@ select{
 header{
   background:#070707;
   color:white;
-  border-bottom:1px solid #292929;
 }
 
 .header-inner{
-  width:min(1250px,92%);
+  width:min(1200px,92%);
   margin:auto;
-  min-height:78px;
+  min-height:76px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:20px;
+  gap:15px;
 }
 
 .header-logo{
-  width:145px;
-  display:block;
+  width:140px;
 }
 
 .admin-info{
@@ -169,69 +163,71 @@ header{
 }
 
 .logout{
+  border:0;
   background:var(--gold);
   color:#111;
-  border:none;
-  padding:10px 16px;
-  border-radius:7px;
+  padding:10px 15px;
+  border-radius:8px;
   font-weight:bold;
   cursor:pointer;
 }
 
 main{
-  width:min(1250px,92%);
-  margin:45px auto;
+  width:min(1200px,92%);
+  margin:38px auto 70px;
 }
 
 .top{
   display:flex;
   justify-content:space-between;
-  align-items:end;
+  align-items:flex-end;
   gap:20px;
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 
 .eyebrow{
   color:#a87000;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
   font-size:11px;
+  text-transform:uppercase;
   font-weight:bold;
+  letter-spacing:1.5px;
 }
 
 .top h1{
-  font-size:36px;
   margin-top:7px;
+  font-size:34px;
 }
 
 .top p{
   color:#777;
-  margin-top:5px;
+  margin-top:6px;
 }
 
 .refresh{
-  border:1px solid #ddd;
   background:white;
+  border:1px solid #ddd;
   padding:11px 16px;
   border-radius:8px;
-  cursor:pointer;
   font-weight:bold;
+  cursor:pointer;
 }
 
-/* STATISTIQUES */
+/* =========================
+   5 STATUTS
+========================= */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
   margin-bottom:30px;
 }
 
 .stat{
   background:white;
   border:1px solid var(--border);
-  border-radius:14px;
-  padding:22px;
+  border-radius:15px;
+  padding:21px;
 }
 
 .stat span{
@@ -241,175 +237,276 @@ main{
 
 .stat strong{
   display:block;
-  font-size:30px;
-  margin-top:5px;
+  font-size:29px;
+  margin-top:8px;
 }
 
-/* TABLE */
+/* =========================
+   DEMANDES
+========================= */
 
-.table-card{
+.requests-section{
   background:white;
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:17px;
   overflow:hidden;
 }
 
-.table-header{
-  padding:20px 22px;
+.requests-header{
+  padding:21px;
   border-bottom:1px solid var(--border);
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  gap:15px;
+  justify-content:space-between;
+  gap:20px;
 }
 
-.table-header h2{
-  font-size:19px;
+.requests-header h2{
+  font-size:20px;
 }
 
 .search{
-  width:280px;
+  width:300px;
   max-width:100%;
-  padding:11px 13px;
+  padding:12px 14px;
   border:1px solid #ddd;
-  border-radius:8px;
+  border-radius:9px;
   outline:none;
 }
 
-.table-wrap{
-  overflow-x:auto;
+#requestsContainer{
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
 }
 
-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:1050px;
+.request-card{
+  border:1px solid #e5e5e5;
+  border-radius:15px;
+  padding:21px;
+  background:#fff;
 }
 
-th{
-  background:#fafafa;
-  color:#666;
-  text-align:left;
-  font-size:12px;
-  padding:14px 16px;
+.request-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  padding-bottom:17px;
+  margin-bottom:17px;
   border-bottom:1px solid #eee;
 }
 
-td{
-  padding:16px;
-  border-bottom:1px solid #eee;
-  font-size:13px;
-  vertical-align:top;
-}
-
-.number{
-  font-weight:bold;
-}
-
-.client-name{
-  font-weight:bold;
-  display:block;
-}
-
-.small{
-  color:#777;
+.request-number{
   font-size:12px;
+  color:#a87000;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.request-name{
+  font-size:19px;
+  font-weight:bold;
+}
+
+.request-date{
+  font-size:11px;
+  color:#888;
+  text-align:right;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+.info{
+  min-width:0;
+}
+
+.info-label{
   display:block;
-  margin-top:3px;
+  color:#888;
+  font-size:11px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.info-value{
+  font-size:14px;
+  overflow-wrap:anywhere;
+}
+
+.card-actions{
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:9px;
+  margin-top:20px;
+  padding-top:17px;
+  border-top:1px solid #eee;
 }
 
 .status{
-  padding:9px 10px;
+  min-width:0;
+  padding:11px;
   border:1px solid #ddd;
-  border-radius:7px;
+  border-radius:8px;
   background:white;
-  min-width:135px;
 }
 
 .details{
-  border:none;
-  background:#111;
+  background:#090909;
   color:white;
-  padding:9px 12px;
-  border-radius:7px;
+  border:0;
+  padding:11px 15px;
+  border-radius:8px;
   cursor:pointer;
+  font-weight:bold;
+}
+
+.delete{
+  background:#b42318;
+  color:white;
+  border:0;
+  padding:11px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.delete:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 .empty{
+  padding:45px 20px;
   text-align:center;
-  padding:50px 20px;
   color:#777;
 }
 
-/* MODALE */
+/* =========================
+   MODALE
+========================= */
 
 .modal{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.65);
-  z-index:2000;
+  background:rgba(0,0,0,.7);
+  z-index:1000;
   padding:20px;
-  overflow:auto;
+  overflow-y:auto;
 }
 
 .modal-content{
-  max-width:700px;
-  margin:40px auto;
+  max-width:680px;
+  margin:35px auto;
   background:white;
   border-radius:18px;
-  padding:30px;
+  padding:28px;
 }
 
 .modal-top{
   display:flex;
   justify-content:space-between;
-  gap:20px;
   align-items:center;
-  margin-bottom:25px;
+  gap:20px;
+  margin-bottom:20px;
 }
 
 .close{
-  border:none;
-  background:#eee;
   width:38px;
   height:38px;
+  border:0;
   border-radius:50%;
-  cursor:pointer;
+  background:#eee;
   font-size:20px;
+  cursor:pointer;
 }
 
 .detail-row{
-  padding:15px 0;
+  padding:14px 0;
   border-bottom:1px solid #eee;
 }
 
 .detail-row strong{
   display:block;
-  font-size:12px;
   color:#777;
-  margin-bottom:5px;
   text-transform:uppercase;
+  font-size:11px;
+  margin-bottom:5px;
 }
 
 .detail-row p{
+  line-height:1.5;
+  overflow-wrap:anywhere;
   white-space:pre-wrap;
 }
 
-/* RESPONSIVE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:800px){
+@media(max-width:900px){
 
   .stats{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  #requestsContainer{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+
+  main{
+    width:92%;
+    margin-top:28px;
+  }
+
+  .header-inner{
+    min-height:70px;
+  }
+
+  .header-logo{
+    width:120px;
+  }
+
+  .admin-email{
+    display:none;
   }
 
   .top{
-    align-items:flex-start;
     flex-direction:column;
+    align-items:flex-start;
   }
 
-  .table-header{
+  .top h1{
+    font-size:29px;
+  }
+
+  .refresh{
+    width:100%;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat{
+    padding:17px;
+  }
+
+  .stat strong{
+    font-size:27px;
+  }
+
+  .requests-header{
     flex-direction:column;
     align-items:stretch;
   }
@@ -418,23 +515,39 @@ td{
     width:100%;
   }
 
-  .admin-email{
-    display:none;
-  }
-}
-
-@media(max-width:500px){
-
-  .login-card{
-    padding:30px 22px;
+  #requestsContainer{
+    padding:13px;
+    gap:13px;
   }
 
-  .stats{
+  .request-card{
+    padding:17px;
+  }
+
+  .request-top{
+    flex-direction:column;
+  }
+
+  .request-date{
+    text-align:left;
+  }
+
+  .info-grid{
     grid-template-columns:1fr;
   }
 
-  .top h1{
-    font-size:29px;
+  .card-actions{
+    grid-template-columns:1fr;
+  }
+
+  .status,
+  .details,
+  .delete{
+    width:100%;
+  }
+
+  .login-card{
+    padding:30px 22px;
   }
 }
 </style>
@@ -442,255 +555,184 @@ td{
 
 <body>
 
-<!-- CONNEXION ADMIN -->
-
 <section id="loginPage">
 
-  <div class="login-card">
+<div class="login-card">
 
-    <img
-      src="logo-nexora.jpg"
-      alt="Nexora"
-      class="login-logo"
-    >
+<img src="logo-nexora.jpg"
+alt="Nexora"
+class="login-logo">
 
-    <h1>Administration</h1>
+<h1>Administration</h1>
 
-    <p>
-      Connectez-vous pour gérer les demandes Nexora.
-    </p>
+<p>Connectez-vous pour gérer les demandes Nexora.</p>
 
-    <form id="loginForm">
+<form id="loginForm">
 
-      <div class="field">
+<div class="field">
+<label for="adminEmail">Adresse e-mail</label>
+<input type="email"
+id="adminEmail"
+required
+autocomplete="email">
+</div>
 
-        <label for="adminEmail">
-          Adresse e-mail
-        </label>
+<div class="field">
+<label for="adminPassword">Mot de passe</label>
+<input type="password"
+id="adminPassword"
+required
+autocomplete="current-password">
+</div>
 
-        <input
-          type="email"
-          id="adminEmail"
-          required
-          autocomplete="email"
-        >
+<button type="submit"
+class="login-button"
+id="loginButton">
+Se connecter
+</button>
 
-      </div>
+<div id="errorMessage"></div>
 
-      <div class="field">
+</form>
 
-        <label for="adminPassword">
-          Mot de passe
-        </label>
-
-        <input
-          type="password"
-          id="adminPassword"
-          required
-          autocomplete="current-password"
-        >
-
-      </div>
-
-      <button
-        type="submit"
-        class="login-button"
-        id="loginButton"
-      >
-        Se connecter
-      </button>
-
-      <div id="errorMessage"></div>
-
-    </form>
-
-  </div>
-
+</div>
 </section>
 
-
-<!-- ESPACE ADMIN -->
 
 <section id="adminPage">
 
 <header>
+<div class="header-inner">
 
-  <div class="header-inner">
+<img src="logo-nexora.jpg"
+alt="Nexora"
+class="header-logo">
 
-    <img
-      src="logo-nexora.jpg"
-      alt="Nexora"
-      class="header-logo"
-    >
+<div class="admin-info">
 
-    <div class="admin-info">
+<span class="admin-email"
+id="connectedEmail"></span>
 
-      <span
-        class="admin-email"
-        id="connectedEmail"
-      ></span>
+<button class="logout"
+id="logoutButton">
+Déconnexion
+</button>
 
-      <button
-        class="logout"
-        id="logoutButton"
-      >
-        Déconnexion
-      </button>
-
-    </div>
-
-  </div>
-
+</div>
+</div>
 </header>
 
 
 <main>
 
-  <div class="top">
+<div class="top">
 
-    <div>
+<div>
 
-      <span class="eyebrow">
-        Nexora Administration
-      </span>
+<span class="eyebrow">
+Nexora Administration
+</span>
 
-      <h1>Demandes clients</h1>
+<h1>Demandes clients</h1>
 
-      <p>
-        Consultez et gérez les projets reçus.
-      </p>
+<p>
+Consultez et gérez les projets reçus.
+</p>
 
-    </div>
+</div>
 
-    <button
-      class="refresh"
-      id="refreshButton"
-    >
-      Actualiser
-    </button>
-
-  </div>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <span>Total des demandes</span>
-      <strong id="totalCount">0</strong>
-    </div>
-
-    <div class="stat">
-      <span>Nouvelles</span>
-      <strong id="newCount">0</strong>
-    </div>
-
-    <div class="stat">
-      <span>En cours</span>
-      <strong id="progressCount">0</strong>
-    </div>
-
-    <div class="stat">
-      <span>Terminées</span>
-      <strong id="doneCount">0</strong>
-    </div>
-
-  </div>
-
-
-  <div class="table-card">
-
-    <div class="table-header">
-
-      <h2>Liste des demandes</h2>
-
-      <input
-        type="search"
-        id="searchInput"
-        class="search"
-        placeholder="Rechercher un client..."
-      >
-
-    </div>
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Demande</th>
-            <th>Client</th>
-            <th>Service</th>
-            <th>Budget</th>
-            <th>Date</th>
-            <th>Statut</th>
-            <th>Détails</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="requestsBody"></tbody>
-
-      </table>
-
-      <div
-        class="empty"
-        id="emptyMessage"
-        style="display:none;"
-      >
-        Aucune demande trouvée.
-      </div>
-
-    </div>
-
-  </div>
-
-</main>
-
-</section>
-
-
-<!-- DÉTAILS -->
-
-<div
-  class="modal"
-  id="detailsModal"
->
-
-  <div class="modal-content">
-
-    <div class="modal-top">
-
-      <h2>
-        Détails de la demande
-      </h2>
-
-      <button
-        class="close"
-        id="closeModal"
-      >
-        ×
-      </button>
-
-    </div>
-
-    <div id="modalBody"></div>
-
-  </div>
+<button class="refresh"
+id="refreshButton">
+Actualiser
+</button>
 
 </div>
 
 
-<!-- SUPABASE JS -->
+<div class="stats">
+
+<div class="stat">
+<span>Nouvelles</span>
+<strong id="newCount">0</strong>
+</div>
+
+<div class="stat">
+<span>En discussion</span>
+<strong id="discussionCount">0</strong>
+</div>
+
+<div class="stat">
+<span>Acceptées</span>
+<strong id="acceptedCount">0</strong>
+</div>
+
+<div class="stat">
+<span>En cours</span>
+<strong id="progressCount">0</strong>
+</div>
+
+<div class="stat">
+<span>Terminées</span>
+<strong id="doneCount">0</strong>
+</div>
+
+</div>
+
+
+<div class="requests-section">
+
+<div class="requests-header">
+
+<h2>Liste des demandes</h2>
+
+<input type="search"
+id="searchInput"
+class="search"
+placeholder="Rechercher un client...">
+
+</div>
+
+<div id="requestsContainer"></div>
+
+<div class="empty"
+id="emptyMessage"
+style="display:none;">
+Aucune demande trouvée.
+</div>
+
+</div>
+
+</main>
+</section>
+
+
+<div class="modal"
+id="detailsModal">
+
+<div class="modal-content">
+
+<div class="modal-top">
+
+<h2>Détails de la demande</h2>
+
+<button class="close"
+id="closeModal">×</button>
+
+</div>
+
+<div id="modalBody"></div>
+
+</div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
-/* =========================================
-   CONFIGURATION SUPABASE
-========================================= */
+/* ==============================
+   SUPABASE
+============================== */
 
 const SUPABASE_URL =
 "https://bfegrpipkgpuificmgwi.supabase.co";
@@ -701,19 +743,18 @@ const SUPABASE_KEY =
 const ADMIN_UID =
 "f7dedfff-1da0-4aef-9919-d65e3c268b7e";
 
-
 const { createClient } = supabase;
 
 const db =
 createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
+SUPABASE_URL,
+SUPABASE_KEY
 );
 
 
-/* =========================================
+/* ==============================
    ÉLÉMENTS
-========================================= */
+============================== */
 
 const loginPage =
 document.getElementById("loginPage");
@@ -730,20 +771,20 @@ document.getElementById("loginButton");
 const errorMessage =
 document.getElementById("errorMessage");
 
-const logoutButton =
-document.getElementById("logoutButton");
+const requestsContainer =
+document.getElementById("requestsContainer");
 
-const refreshButton =
-document.getElementById("refreshButton");
-
-const requestsBody =
-document.getElementById("requestsBody");
+const emptyMessage =
+document.getElementById("emptyMessage");
 
 const searchInput =
 document.getElementById("searchInput");
 
-const emptyMessage =
-document.getElementById("emptyMessage");
+const refreshButton =
+document.getElementById("refreshButton");
+
+const logoutButton =
+document.getElementById("logoutButton");
 
 const detailsModal =
 document.getElementById("detailsModal");
@@ -754,617 +795,771 @@ document.getElementById("closeModal");
 let requests = [];
 
 
-/* =========================================
+/* ==============================
    CONNEXION
-========================================= */
+============================== */
 
 loginForm.addEventListener(
 "submit",
 async function(e){
 
-  e.preventDefault();
+e.preventDefault();
 
-  errorMessage.style.display =
-  "none";
+errorMessage.style.display =
+"none";
 
-  loginButton.disabled = true;
+loginButton.disabled =
+true;
 
-  loginButton.textContent =
-  "Connexion...";
+loginButton.textContent =
+"Connexion...";
 
+const email =
+document
+.getElementById("adminEmail")
+.value
+.trim();
 
-  const email =
-  document
-  .getElementById("adminEmail")
-  .value
-  .trim();
+const password =
+document
+.getElementById("adminPassword")
+.value;
 
-  const password =
-  document
-  .getElementById("adminPassword")
-  .value;
+const { data,error } =
+await db.auth.signInWithPassword({
+email:email,
+password:password
+});
 
+if(error){
 
-  const { data, error } =
-  await db.auth.signInWithPassword({
-    email:email,
-    password:password
-  });
+errorMessage.textContent =
+"Adresse e-mail ou mot de passe incorrect.";
 
+errorMessage.style.display =
+"block";
 
-  if(error){
+loginButton.disabled =
+false;
 
-    errorMessage.textContent =
-    "Adresse e-mail ou mot de passe incorrect.";
+loginButton.textContent =
+"Se connecter";
 
-    errorMessage.style.display =
-    "block";
+return;
+}
 
-    loginButton.disabled = false;
+if(
+!data.user ||
+data.user.id !== ADMIN_UID
+){
 
-    loginButton.textContent =
-    "Se connecter";
+await db.auth.signOut();
 
-    return;
-  }
+errorMessage.textContent =
+"Ce compte n'est pas autorisé.";
 
+errorMessage.style.display =
+"block";
 
-  if(
-    !data.user ||
-    data.user.id !== ADMIN_UID
-  ){
+loginButton.disabled =
+false;
 
-    await db.auth.signOut();
+loginButton.textContent =
+"Se connecter";
 
-    errorMessage.textContent =
-    "Ce compte n'est pas autorisé à accéder à l'administration.";
+return;
+}
 
-    errorMessage.style.display =
-    "block";
+loginButton.disabled =
+false;
 
-    loginButton.disabled = false;
+loginButton.textContent =
+"Se connecter";
 
-    loginButton.textContent =
-    "Se connecter";
-
-    return;
-  }
-
-
-  loginButton.disabled = false;
-
-  loginButton.textContent =
-  "Se connecter";
-
-  await showAdmin(
-    data.user
-  );
+await showAdmin(
+data.user
+);
 
 });
 
 
-/* =========================================
-   AFFICHER ADMIN
-========================================= */
+/* ==============================
+   ADMIN
+============================== */
 
 async function showAdmin(user){
 
-  if(
-    !user ||
-    user.id !== ADMIN_UID
-  ){
-    return;
-  }
+loginPage.style.display =
+"none";
 
-  loginPage.style.display =
-  "none";
+adminPage.style.display =
+"block";
 
-  adminPage.style.display =
-  "block";
+document
+.getElementById("connectedEmail")
+.textContent =
+user.email || "";
 
-  document
-  .getElementById("connectedEmail")
-  .textContent =
-  user.email || "";
-
-  await loadRequests();
+await loadRequests();
 
 }
 
 
-/* =========================================
-   CHARGER LES DEMANDES
-========================================= */
+/* ==============================
+   CHARGER DEMANDES
+============================== */
 
 async function loadRequests(){
 
-  requestsBody.innerHTML =
-  '<tr><td colspan="7" style="text-align:center;padding:35px;">Chargement...</td></tr>';
+requestsContainer.innerHTML =
+'<div class="empty">Chargement...</div>';
 
-  emptyMessage.style.display =
-  "none";
+emptyMessage.style.display =
+"none";
 
+const { data,error } =
+await db
+.from("Demandes")
+.select("*")
+.order(
+"created_at",
+{ascending:false}
+);
 
-  const { data, error } =
-  await db
-  .from("Demandes")
-  .select("*")
-  .order(
-    "created_at",
-    { ascending:false }
-  );
+if(error){
 
+console.error(error);
 
-  if(error){
+requestsContainer.innerHTML =
+'<div class="empty">Impossible de charger les demandes.</div>';
 
-    console.error(error);
+return;
+}
 
-    requestsBody.innerHTML =
-    '<tr><td colspan="7" style="text-align:center;padding:35px;color:#b42318;">Impossible de charger les demandes.</td></tr>';
+requests =
+data || [];
 
-    return;
-  }
+updateStats();
 
-
-  requests =
-  data || [];
-
-  updateStats();
-
-  renderRequests(
-    requests
-  );
+renderRequests(
+requests
+);
 
 }
 
 
-/* =========================================
-   STATISTIQUES
-========================================= */
+/* ==============================
+   5 COMPTEURS
+============================== */
 
 function updateStats(){
 
-  document
-  .getElementById("totalCount")
-  .textContent =
-  requests.length;
+document
+.getElementById("newCount")
+.textContent =
+requests.filter(
+x => x.statut === "Nouvelle"
+).length;
 
+document
+.getElementById("discussionCount")
+.textContent =
+requests.filter(
+x => x.statut === "En discussion"
+).length;
 
-  document
-  .getElementById("newCount")
-  .textContent =
-  requests.filter(
-    item =>
-    item.statut === "Nouvelle"
-  ).length;
+document
+.getElementById("acceptedCount")
+.textContent =
+requests.filter(
+x => x.statut === "Acceptée"
+).length;
 
+document
+.getElementById("progressCount")
+.textContent =
+requests.filter(
+x => x.statut === "En cours"
+).length;
 
-  document
-  .getElementById("progressCount")
-  .textContent =
-  requests.filter(
-    item =>
-    item.statut === "En cours"
-  ).length;
-
-
-  document
-  .getElementById("doneCount")
-  .textContent =
-  requests.filter(
-    item =>
-    item.statut === "Terminée"
-  ).length;
+document
+.getElementById("doneCount")
+.textContent =
+requests.filter(
+x => x.statut === "Terminée"
+).length;
 
 }
 
 
-/* =========================================
-   AFFICHER LES DEMANDES
-========================================= */
+/* ==============================
+   AFFICHER DEMANDES
+============================== */
 
 function renderRequests(list){
 
-  requestsBody.innerHTML = "";
+requestsContainer.innerHTML = "";
+
+if(!list.length){
+
+emptyMessage.style.display =
+"block";
+
+return;
+}
+
+emptyMessage.style.display =
+"none";
 
 
-  if(!list.length){
+list.forEach(function(item){
 
-    emptyMessage.style.display =
-    "block";
+const card =
+document.createElement("article");
 
-    return;
+card.className =
+"request-card";
 
-  }
-
-
-  emptyMessage.style.display =
-  "none";
-
-
-  list.forEach(function(item){
-
-    const row =
-    document.createElement("tr");
+const date =
+item.created_at
+?
+new Date(
+item.created_at
+).toLocaleString("fr-FR")
+:
+"-";
 
 
-    const date =
-    item.created_at
-    ? new Date(
-        item.created_at
-      ).toLocaleString("fr-FR")
-    : "-";
+card.innerHTML = `
+
+<div class="request-top">
+
+<div>
+
+<div class="request-number">
+${escapeHtml(item.numero_demande || "-")}
+</div>
+
+<div class="request-name">
+${escapeHtml(item.nom || "-")}
+</div>
+
+</div>
+
+<div class="request-date">
+${escapeHtml(date)}
+</div>
+
+</div>
 
 
-    row.innerHTML = `
+<div class="info-grid">
 
-      <td>
-        <span class="number">
-          ${escapeHtml(item.numero_demande || "-")}
-        </span>
-      </td>
+<div class="info">
+<span class="info-label">
+Téléphone / WhatsApp
+</span>
+<div class="info-value">
+${escapeHtml(item.telephone || "-")}
+</div>
+</div>
 
-      <td>
+<div class="info">
+<span class="info-label">
+E-mail
+</span>
+<div class="info-value">
+${escapeHtml(item.email || "-")}
+</div>
+</div>
 
-        <span class="client-name">
-          ${escapeHtml(item.nom || "-")}
-        </span>
+<div class="info">
+<span class="info-label">
+Service
+</span>
+<div class="info-value">
+${escapeHtml(item.service || "-")}
+</div>
+</div>
 
-        <span class="small">
-          ${escapeHtml(item.telephone || "")}
-        </span>
+<div class="info">
+<span class="info-label">
+Budget
+</span>
+<div class="info-value">
+${escapeHtml(item.budget || "-")}
+</div>
+</div>
 
-        <span class="small">
-          ${escapeHtml(item.email || "")}
-        </span>
+<div class="info">
+<span class="info-label">
+Délai
+</span>
+<div class="info-value">
+${escapeHtml(item.delai || "-")}
+</div>
+</div>
 
-      </td>
+<div class="info">
+<span class="info-label">
+Entreprise
+</span>
+<div class="info-value">
+${escapeHtml(item.entreprise || "-")}
+</div>
+</div>
 
-      <td>
-        ${escapeHtml(item.service || "-")}
-      </td>
-
-      <td>
-        ${escapeHtml(item.budget || "-")}
-      </td>
-
-      <td>
-        ${escapeHtml(date)}
-      </td>
-
-      <td>
-
-        <select
-          class="status"
-          data-id="${escapeHtml(String(item.id))}"
-        >
-
-          ${statusOption(
-            "Nouvelle",
-            item.statut
-          )}
-
-          ${statusOption(
-            "En discussion",
-            item.statut
-          )}
-
-          ${statusOption(
-            "Acceptée",
-            item.statut
-          )}
-
-          ${statusOption(
-            "En cours",
-            item.statut
-          )}
-
-          ${statusOption(
-            "Terminée",
-            item.statut
-          )}
-
-        </select>
-
-      </td>
-
-      <td>
-
-        <button
-          class="details"
-          data-detail-id="${escapeHtml(String(item.id))}"
-        >
-          Voir
-        </button>
-
-      </td>
-
-    `;
+</div>
 
 
-    requestsBody
-    .appendChild(row);
+<div class="card-actions">
 
-  });
+<select
+class="status"
+data-id="${escapeHtml(String(item.id))}">
+
+${statusOption(
+"Nouvelle",
+item.statut
+)}
+
+${statusOption(
+"En discussion",
+item.statut
+)}
+
+${statusOption(
+"Acceptée",
+item.statut
+)}
+
+${statusOption(
+"En cours",
+item.statut
+)}
+
+${statusOption(
+"Terminée",
+item.statut
+)}
+
+</select>
 
 
-  document
-  .querySelectorAll(".status")
-  .forEach(function(select){
-
-    select.addEventListener(
-    "change",
-    async function(){
-
-      await updateStatus(
-        this.dataset.id,
-        this.value
-      );
-
-    });
-
-  });
+<button
+class="details"
+data-detail-id="${escapeHtml(String(item.id))}">
+Voir les détails
+</button>
 
 
-  document
-  .querySelectorAll(".details")
-  .forEach(function(button){
+<button
+class="delete"
+data-delete-id="${escapeHtml(String(item.id))}">
+Supprimer
+</button>
 
-    button.addEventListener(
-    "click",
-    function(){
+</div>
+`;
 
-      openDetails(
-        this.dataset.detailId
-      );
+requestsContainer
+.appendChild(card);
 
-    });
+});
 
-  });
+
+/* CHANGER STATUT */
+
+document
+.querySelectorAll(".status")
+.forEach(function(select){
+
+select.addEventListener(
+"change",
+async function(){
+
+await updateStatus(
+this.dataset.id,
+this.value
+);
+
+});
+
+});
+
+
+/* VOIR DÉTAILS */
+
+document
+.querySelectorAll(".details")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+openDetails(
+this.dataset.detailId
+);
+
+});
+
+});
+
+
+/* SUPPRIMER */
+
+document
+.querySelectorAll(".delete")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+async function(){
+
+await deleteRequest(
+this.dataset.deleteId
+);
+
+});
+
+});
 
 }
 
 
-/* =========================================
+/* ==============================
    OPTIONS STATUT
-========================================= */
+============================== */
 
 function statusOption(
 value,
 current
 ){
 
-  return `
-    <option
-      value="${value}"
-      ${current === value ? "selected" : ""}
-    >
-      ${value}
-    </option>
-  `;
+return `
+<option
+value="${value}"
+${current === value ? "selected" : ""}>
+${value}
+</option>
+`;
 
 }
 
 
-/* =========================================
+/* ==============================
    MODIFIER STATUT
-========================================= */
+============================== */
 
 async function updateStatus(
 id,
 newStatus
 ){
 
-  const { error } =
-  await db
-  .from("Demandes")
-  .update({
-    statut:newStatus
-  })
-  .eq(
-    "id",
-    id
-  );
+const { error } =
+await db
+.from("Demandes")
+.update({
+statut:newStatus
+})
+.eq(
+"id",
+id
+);
 
+if(error){
 
-  if(error){
+console.error(error);
 
-    console.error(error);
+alert(
+"Impossible de modifier le statut."
+);
 
-    alert(
-      "Impossible de modifier le statut."
-    );
+await loadRequests();
 
-    await loadRequests();
+return;
+}
 
-    return;
-  }
+const item =
+requests.find(
+x =>
+String(x.id) ===
+String(id)
+);
 
+if(item){
+item.statut =
+newStatus;
+}
 
-  const item =
-  requests.find(
-    request =>
-    String(request.id) ===
-    String(id)
-  );
-
-
-  if(item){
-
-    item.statut =
-    newStatus;
-
-  }
-
-
-  updateStats();
+updateStats();
 
 }
 
 
-/* =========================================
+/* ==============================
+   SUPPRIMER DEMANDE
+============================== */
+
+async function deleteRequest(id){
+
+const item =
+requests.find(
+x =>
+String(x.id) ===
+String(id)
+);
+
+if(!item){
+return;
+}
+
+const numero =
+item.numero_demande ||
+"cette demande";
+
+const confirmation =
+confirm(
+"Voulez-vous vraiment supprimer la demande " +
+numero +
+" ?\n\nCette action est définitive."
+);
+
+if(!confirmation){
+return;
+}
+
+const button =
+document.querySelector(
+`.delete[data-delete-id="${CSS.escape(String(id))}"]`
+);
+
+if(button){
+button.disabled = true;
+button.textContent =
+"Suppression...";
+}
+
+const { error } =
+await db
+.from("Demandes")
+.delete()
+.eq(
+"id",
+id
+);
+
+if(error){
+
+console.error(error);
+
+alert(
+"La demande n'a pas pu être supprimée."
+);
+
+if(button){
+button.disabled = false;
+button.textContent =
+"Supprimer";
+}
+
+return;
+}
+
+
+/*
+VÉRIFICATION :
+on recharge les données depuis Supabase
+après la suppression.
+*/
+
+await loadRequests();
+
+alert(
+"La demande " +
+numero +
+" a été supprimée."
+);
+
+}
+
+
+/* ==============================
    DÉTAILS
-========================================= */
+============================== */
 
 function openDetails(id){
 
-  const item =
-  requests.find(
-    request =>
-    String(request.id) ===
-    String(id)
-  );
+const item =
+requests.find(
+x =>
+String(x.id) ===
+String(id)
+);
 
+if(!item){
+return;
+}
 
-  if(!item){
-    return;
-  }
+document
+.getElementById("modalBody")
+.innerHTML =
 
+detail(
+"Numéro de demande",
+item.numero_demande
+)
 
-  document
-  .getElementById("modalBody")
-  .innerHTML = `
++
 
-    ${detail(
-      "Numéro de demande",
-      item.numero_demande
-    )}
+detail(
+"Client",
+item.nom
+)
 
-    ${detail(
-      "Client",
-      item.nom
-    )}
++
 
-    ${detail(
-      "Entreprise",
-      item.entreprise
-    )}
+detail(
+"Entreprise",
+item.entreprise
+)
 
-    ${detail(
-      "Téléphone / WhatsApp",
-      item.telephone
-    )}
++
 
-    ${detail(
-      "E-mail",
-      item.email
-    )}
+detail(
+"Téléphone / WhatsApp",
+item.telephone
+)
 
-    ${detail(
-      "Service",
-      item.service
-    )}
++
 
-    ${detail(
-      "Objectif",
-      item.objectif
-    )}
+detail(
+"E-mail",
+item.email
+)
 
-    ${detail(
-      "Description",
-      item.description
-    )}
++
 
-    ${detail(
-      "Logo / identité",
-      item.identite_logo
-    )}
+detail(
+"Service",
+item.service
+)
 
-    ${detail(
-      "Budget",
-      item.budget
-    )}
++
 
-    ${detail(
-      "Délai",
-      item.delai
-    )}
+detail(
+"Objectif",
+item.objectif
+)
 
-    ${detail(
-      "Statut",
-      item.statut
-    )}
++
 
-  `;
+detail(
+"Description du projet",
+item.description
+)
 
++
 
-  detailsModal.style.display =
-  "block";
+detail(
+"Identité / Logo",
+item.identite_logo
+)
+
++
+
+detail(
+"Budget",
+item.budget
+)
+
++
+
+detail(
+"Délai",
+item.delai
+)
+
++
+
+detail(
+"Statut",
+item.statut
+);
+
+detailsModal.style.display =
+"block";
 
 }
 
-
-/* =========================================
-   DÉTAIL
-========================================= */
 
 function detail(
 title,
 value
 ){
 
-  return `
+return `
 
-    <div class="detail-row">
+<div class="detail-row">
 
-      <strong>
-        ${escapeHtml(title)}
-      </strong>
+<strong>
+${escapeHtml(title)}
+</strong>
 
-      <p>
-        ${escapeHtml(value || "-")}
-      </p>
+<p>
+${escapeHtml(value || "-")}
+</p>
 
-    </div>
+</div>
 
-  `;
+`;
 
 }
 
 
-/* =========================================
+/* ==============================
    RECHERCHE
-========================================= */
+============================== */
 
 searchInput.addEventListener(
 "input",
 function(){
 
-  const term =
-  this.value
-  .toLowerCase()
-  .trim();
+const term =
+this.value
+.toLowerCase()
+.trim();
 
+const filtered =
+requests.filter(function(item){
 
-  const filtered =
-  requests.filter(function(item){
+return [
 
-    return [
+item.nom,
+item.email,
+item.telephone,
+item.numero_demande,
+item.service,
+item.statut
 
-      item.nom,
-      item.email,
-      item.telephone,
-      item.numero_demande,
-      item.service
+]
+.join(" ")
+.toLowerCase()
+.includes(term);
 
-    ]
-    .join(" ")
-    .toLowerCase()
-    .includes(term);
+});
 
-  });
-
-
-  renderRequests(
-    filtered
-  );
+renderRequests(
+filtered
+);
 
 });
 
 
-/* =========================================
+/* ==============================
    ACTUALISER
-========================================= */
+============================== */
 
 refreshButton.addEventListener(
 "click",
@@ -1372,37 +1567,37 @@ loadRequests
 );
 
 
-/* =========================================
+/* ==============================
    DÉCONNEXION
-========================================= */
+============================== */
 
 logoutButton.addEventListener(
 "click",
 async function(){
 
-  await db.auth.signOut();
+await db.auth.signOut();
 
-  adminPage.style.display =
-  "none";
+adminPage.style.display =
+"none";
 
-  loginPage.style.display =
-  "flex";
+loginPage.style.display =
+"flex";
 
-  loginForm.reset();
+loginForm.reset();
 
 });
 
 
-/* =========================================
+/* ==============================
    MODALE
-========================================= */
+============================== */
 
 closeModal.addEventListener(
 "click",
 function(){
 
-  detailsModal.style.display =
-  "none";
+detailsModal.style.display =
+"none";
 
 });
 
@@ -1411,75 +1606,72 @@ detailsModal.addEventListener(
 "click",
 function(e){
 
-  if(
-    e.target === detailsModal
-  ){
+if(
+e.target === detailsModal
+){
 
-    detailsModal.style.display =
-    "none";
+detailsModal.style.display =
+"none";
 
-  }
+}
 
 });
 
 
-/* =========================================
+/* ==============================
    SÉCURITÉ AFFICHAGE
-========================================= */
+============================== */
 
 function escapeHtml(value){
 
-  return String(value)
-  .replaceAll("&","&amp;")
-  .replaceAll("<","&lt;")
-  .replaceAll(">","&gt;")
-  .replaceAll('"',"&quot;")
-  .replaceAll("'","&#039;");
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
 
-/* =========================================
-   SESSION EXISTANTE
-========================================= */
+/* ==============================
+   SESSION
+============================== */
 
 async function checkSession(){
 
-  const {
-    data:{
-      session
-    }
-  } =
-  await db.auth.getSession();
+const {
+data:{
+session
+}
+} =
+await db.auth.getSession();
 
 
-  if(
-    session &&
-    session.user &&
-    session.user.id === ADMIN_UID
-  ){
+if(
+session &&
+session.user &&
+session.user.id === ADMIN_UID
+){
 
-    await showAdmin(
-      session.user
-    );
+await showAdmin(
+session.user
+);
 
-    return;
-
-  }
-
-
-  if(session){
-
-    await db.auth.signOut();
-
-  }
+return;
+}
 
 
-  loginPage.style.display =
-  "flex";
+if(session){
+await db.auth.signOut();
+}
 
-  adminPage.style.display =
-  "none";
+
+loginPage.style.display =
+"flex";
+
+adminPage.style.display =
+"none";
 
 }
 
