@@ -196,7 +196,7 @@ nav a{
   font-size:14px;
 }
 
-/* LOGO ENTRE LES SECTIONS */
+/* LOGO */
 
 .section-logo{
   width:190px;
@@ -477,6 +477,136 @@ textarea{
   margin-top:14px;
 }
 
+/* CONFIRMATION */
+
+.success-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.82);
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.success-card{
+  width:100%;
+  max-width:500px;
+  background:#fff;
+  border-radius:20px;
+  padding:32px;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+}
+
+.success-mark{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#111;
+  color:var(--gold2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 18px;
+  font-weight:bold;
+  font-size:16px;
+}
+
+.success-card h2{
+  font-size:27px;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+
+.success-text{
+  color:#707070;
+  font-size:14px;
+}
+
+.request-box{
+  background:#090909;
+  border-radius:12px;
+  padding:19px 14px;
+  margin:22px 0 15px;
+}
+
+.request-box span{
+  display:block;
+  color:#aaa;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-bottom:7px;
+}
+
+.request-box strong{
+  display:block;
+  color:var(--gold2);
+  font-size:23px;
+  user-select:all;
+  overflow-wrap:anywhere;
+}
+
+.keep-number{
+  background:#fff7e4;
+  border:1px solid #ead08b;
+  border-radius:11px;
+  padding:15px;
+  margin-bottom:21px;
+  color:#5b4204;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.keep-number strong{
+  display:block;
+  color:#302200;
+  font-size:15px;
+  margin-bottom:4px;
+}
+
+.success-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.copy-button,
+.track-button{
+  min-height:48px;
+  border:0;
+  border-radius:9px;
+  padding:13px;
+  font-weight:bold;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.copy-button{
+  background:var(--gold);
+  color:#111;
+}
+
+.track-button{
+  background:#090909;
+  color:white;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.close-success{
+  border:0;
+  background:none;
+  color:#777;
+  margin-top:18px;
+  font-size:13px;
+  cursor:pointer;
+}
+
 /* FOOTER */
 
 footer{
@@ -626,6 +756,22 @@ footer h4{
   .section-logo{
     width:155px;
   }
+
+  .success-card{
+    padding:26px 18px;
+  }
+
+  .success-card h2{
+    font-size:23px;
+  }
+
+  .request-box strong{
+    font-size:20px;
+  }
+
+  .success-actions{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -717,7 +863,6 @@ Une solution digitale pensée autour de votre projet.
 </div>
 
 </div>
-
 </section>
 
 <!-- EXPERTISES -->
@@ -747,7 +892,6 @@ construit une solution adaptée à vos besoins.
 </p>
 
 </div>
-
 </section>
 
 <!-- SERVICES -->
@@ -829,7 +973,6 @@ et recevoir vos commandes en ligne.
 </article>
 
 </div>
-
 </section>
 
 <!-- FONCTIONNEMENT -->
@@ -1176,6 +1319,80 @@ Suivre ma demande
 </div>
 </footer>
 
+<!-- CONFIRMATION APRÈS ENVOI -->
+
+<div
+class="success-modal"
+id="successModal"
+role="dialog"
+aria-modal="true"
+aria-labelledby="successTitle"
+>
+
+<div class="success-card">
+
+<div class="success-mark">
+OK
+</div>
+
+<h2 id="successTitle">
+Demande envoyée avec succès
+</h2>
+
+<p class="success-text">
+Votre demande a bien été enregistrée par Nexora.
+</p>
+
+<div class="request-box">
+
+<span>
+VOTRE NUMÉRO DE DEMANDE
+</span>
+
+<strong id="successRequestNumber">
+</strong>
+
+</div>
+
+<div class="keep-number">
+
+<strong>
+Conservez précieusement ce numéro.
+</strong>
+
+Il vous permettra de suivre l'avancement de votre demande.
+Copiez-le et gardez-le dans vos notes ou dans un endroit sûr.
+
+</div>
+
+<div class="success-actions">
+
+<button
+type="button"
+class="copy-button"
+id="copyRequestNumber">
+Copier le numéro
+</button>
+
+<a
+href="suivi.html"
+class="track-button"
+id="trackRequest">
+Suivre ma demande
+</a>
+
+</div>
+
+<button
+type="button"
+class="close-success"
+id="closeSuccess">
+Fermer
+</button>
+
+</div>
+</div>
+
 <script>
 
 /* ========================================
@@ -1187,7 +1404,6 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
 "sb_publishable_E9mwl-2QpyIIsh3gCgt_6w_naHoPtGa";
-
 
 const form =
 document.getElementById("projectForm");
@@ -1253,7 +1469,8 @@ Date.now().toString().slice(-8) +
 Math.floor(100 + Math.random() * 900);
 
 
-submitButton.disabled = true;
+submitButton.disabled =
+true;
 
 submitButton.textContent =
 "Envoi en cours...";
@@ -1345,14 +1562,29 @@ throw new Error(erreur);
 
 /* SUCCÈS */
 
-alert(
-"Merci " + nom + " !\n\n" +
-"Votre demande a bien été envoyée à Nexora.\n\n" +
-"Numéro de demande : " +
-numeroDemande +
-"\n\nConservez bien ce numéro. Il vous permettra de suivre l'avancement de votre demande dans l'espace « Suivre ma demande ».\n\n" +
-"Nous étudierons votre projet et vous contacterons prochainement."
-);
+document
+.getElementById("successRequestNumber")
+.textContent =
+numeroDemande;
+
+
+document
+.getElementById("trackRequest")
+.href =
+"suivi.html?numero=" +
+encodeURIComponent(numeroDemande);
+
+
+document
+.getElementById("copyRequestNumber")
+.textContent =
+"Copier le numéro";
+
+
+document
+.getElementById("successModal")
+.style.display =
+"flex";
 
 
 form.reset();
@@ -1371,10 +1603,107 @@ alert(
 
 }finally{
 
-submitButton.disabled = false;
+submitButton.disabled =
+false;
 
 submitButton.textContent =
 "Envoyer ma demande";
+
+}
+
+});
+
+
+/* ========================================
+   COPIER LE NUMÉRO
+======================================== */
+
+document
+.getElementById("copyRequestNumber")
+.addEventListener(
+"click",
+async function(){
+
+const button =
+this;
+
+const numero =
+document
+.getElementById("successRequestNumber")
+.textContent;
+
+
+try{
+
+await navigator.clipboard.writeText(
+numero
+);
+
+}catch(error){
+
+const zone =
+document.createElement("textarea");
+
+zone.value =
+numero;
+
+zone.style.position =
+"fixed";
+
+zone.style.opacity =
+"0";
+
+document.body.appendChild(
+zone
+);
+
+zone.focus();
+
+zone.select();
+
+document.execCommand(
+"copy"
+);
+
+zone.remove();
+
+}
+
+
+button.textContent =
+"Numéro copié";
+
+});
+
+
+/* ========================================
+   FERMER LA CONFIRMATION
+======================================== */
+
+document
+.getElementById("closeSuccess")
+.addEventListener(
+"click",
+function(){
+
+document
+.getElementById("successModal")
+.style.display =
+"none";
+
+});
+
+
+document
+.getElementById("successModal")
+.addEventListener(
+"click",
+function(e){
+
+if(e.target === this){
+
+this.style.display =
+"none";
 
 }
 
