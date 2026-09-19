@@ -51,10 +51,11 @@ header{
 }
 
 .header-inner{
-  height:82px;
+  min-height:82px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo img{
@@ -65,7 +66,7 @@ header{
 nav{
   display:flex;
   align-items:center;
-  gap:30px;
+  gap:25px;
 }
 
 nav a{
@@ -73,6 +74,10 @@ nav a{
   text-decoration:none;
   font-size:14px;
   font-weight:600;
+}
+
+.nav-track{
+  color:var(--gold2) !important;
 }
 
 .nav-button{
@@ -520,8 +525,17 @@ footer h4{
 
 @media(max-width:850px){
 
-  nav a:not(.nav-button){
+  nav a{
     display:none;
+  }
+
+  nav .nav-track,
+  nav .nav-button{
+    display:inline-block;
+  }
+
+  nav{
+    gap:8px;
   }
 
   .hero{
@@ -574,13 +588,23 @@ footer h4{
 
 @media(max-width:520px){
 
-  .logo img{
-    width:125px;
+  .header-inner{
+    min-height:74px;
   }
 
-  .nav-button{
-    padding:9px 12px;
-    font-size:12px;
+  .logo img{
+    width:115px;
+  }
+
+  .nav-button,
+  .nav-track{
+    padding:8px 9px;
+    font-size:11px;
+  }
+
+  .nav-track{
+    border:1px solid #4b4025;
+    border-radius:7px;
   }
 
   .hero h1{
@@ -619,7 +643,14 @@ footer h4{
 <a href="#accueil">Accueil</a>
 <a href="#services">Services</a>
 <a href="#fonctionnement">Fonctionnement</a>
-<a href="#commander" class="nav-button">Expliquer mon projet</a>
+
+<a href="suivi.html" class="nav-track">
+Suivre ma demande
+</a>
+
+<a href="#commander" class="nav-button">
+Expliquer mon projet
+</a>
 </nav>
 
 </div>
@@ -653,6 +684,10 @@ en ligne sur mesure pour les entrepreneurs, professionnels et entreprises.
 
 <a href="#commander" class="btn btn-gold">
 Expliquer mon projet
+</a>
+
+<a href="suivi.html" class="btn btn-dark">
+Suivre ma demande
 </a>
 
 <a href="#services" class="btn btn-dark">
@@ -823,57 +858,40 @@ de construire la solution.
 <div class="steps">
 
 <div class="step">
-
 <span>ÉTAPE 01</span>
-
 <h3>Votre demande</h3>
-
 <p>
 Vous décrivez votre activité, vos objectifs et la solution souhaitée.
 </p>
-
 </div>
 
 <div class="step">
-
 <span>ÉTAPE 02</span>
-
 <h3>Analyse</h3>
-
 <p>
 Nous étudions votre projet afin d'identifier les besoins essentiels.
 </p>
-
 </div>
 
 <div class="step">
-
 <span>ÉTAPE 03</span>
-
 <h3>Proposition</h3>
-
 <p>
 Une solution adaptée, un délai et les prochaines étapes vous sont proposés.
 </p>
-
 </div>
 
 <div class="step">
-
 <span>ÉTAPE 04</span>
-
 <h3>Réalisation</h3>
-
 <p>
 Votre projet est construit puis préparé pour sa mise en ligne.
 </p>
-
 </div>
 
 </div>
 
 </div>
-
 </section>
 
 <!-- POURQUOI NEXORA -->
@@ -883,12 +901,7 @@ Votre projet est construit puis préparé pour sa mise en ligne.
 <div class="container why-grid">
 
 <div class="why-box">
-
-<img
-src="logo-nexora.jpg"
-alt="Nexora"
->
-
+<img src="logo-nexora.jpg" alt="Nexora">
 </div>
 
 <div>
@@ -904,50 +917,32 @@ Votre projet mérite plus qu'un simple site.
 <div class="reasons">
 
 <div class="reason">
-
-<strong>
-Conception sur mesure
-</strong>
-
+<strong>Conception sur mesure</strong>
 <p>
 Nous partons de vos besoins et de vos objectifs plutôt que
 d'une solution identique pour tout le monde.
 </p>
-
 </div>
 
 <div class="reason">
-
-<strong>
-Design professionnel
-</strong>
-
+<strong>Design professionnel</strong>
 <p>
 Une présentation claire et moderne adaptée aux ordinateurs,
 tablettes et smartphones.
 </p>
-
 </div>
 
 <div class="reason">
-
-<strong>
-Accompagnement du projet
-</strong>
-
+<strong>Accompagnement du projet</strong>
 <p>
 Votre demande est étudiée avant la réalisation afin de
 construire une solution cohérente.
 </p>
-
 </div>
 
 </div>
-
 </div>
-
 </div>
-
 </section>
 
 <!-- FORMULAIRE -->
@@ -984,58 +979,23 @@ comprendre précisément vos besoins.
 <div class="form-grid">
 
 <div>
-
-<label for="nom">
-Nom et prénom *
-</label>
-
-<input
-id="nom"
-type="text"
-required
->
-
+<label for="nom">Nom et prénom *</label>
+<input id="nom" type="text" required>
 </div>
 
 <div>
-
-<label for="entreprise">
-Entreprise
-</label>
-
-<input
-id="entreprise"
-type="text"
->
-
+<label for="entreprise">Entreprise</label>
+<input id="entreprise" type="text">
 </div>
 
 <div>
-
-<label for="telephone">
-WhatsApp / Téléphone *
-</label>
-
-<input
-id="telephone"
-type="tel"
-required
->
-
+<label for="telephone">WhatsApp / Téléphone *</label>
+<input id="telephone" type="tel" required>
 </div>
 
 <div>
-
-<label for="email">
-Adresse e-mail *
-</label>
-
-<input
-id="email"
-type="email"
-required
->
-
+<label for="email">Adresse e-mail *</label>
+<input id="email" type="email" required>
 </div>
 
 <div class="full">
@@ -1045,23 +1005,10 @@ Que souhaitez-vous créer ? *
 </label>
 
 <select id="service" required>
-
-<option value="">
-Sélectionnez votre projet
-</option>
-
-<option>
-Site internet
-</option>
-
-<option>
-Tunnel de vente
-</option>
-
-<option>
-Boutique en ligne
-</option>
-
+<option value="">Sélectionnez votre projet</option>
+<option>Site internet</option>
+<option>Tunnel de vente</option>
+<option>Boutique en ligne</option>
 </select>
 
 </div>
@@ -1101,19 +1048,9 @@ Logo / identité visuelle
 </label>
 
 <select id="identite">
-
-<option>
-J'ai déjà tout
-</option>
-
-<option>
-J'ai seulement un logo
-</option>
-
-<option>
-Je n'en ai pas encore
-</option>
-
+<option>J'ai déjà tout</option>
+<option>J'ai seulement un logo</option>
+<option>Je n'en ai pas encore</option>
 </select>
 
 </div>
@@ -1125,31 +1062,12 @@ Budget prévu
 </label>
 
 <select id="budget">
-
-<option>
-À discuter
-</option>
-
-<option>
-Moins de 100 000 F CFA
-</option>
-
-<option>
-100 000 – 250 000 F CFA
-</option>
-
-<option>
-250 000 – 500 000 F CFA
-</option>
-
-<option>
-500 000 – 1 000 000 F CFA
-</option>
-
-<option>
-Plus de 1 000 000 F CFA
-</option>
-
+<option>À discuter</option>
+<option>Moins de 100 000 F CFA</option>
+<option>100 000 – 250 000 F CFA</option>
+<option>250 000 – 500 000 F CFA</option>
+<option>500 000 – 1 000 000 F CFA</option>
+<option>Plus de 1 000 000 F CFA</option>
 </select>
 
 </div>
@@ -1161,27 +1079,11 @@ Quand souhaitez-vous lancer votre projet ?
 </label>
 
 <select id="delai">
-
-<option>
-Dès que possible
-</option>
-
-<option>
-Dans moins de 2 semaines
-</option>
-
-<option>
-Dans 1 mois
-</option>
-
-<option>
-Dans 2 à 3 mois
-</option>
-
-<option>
-Je n'ai pas encore décidé
-</option>
-
+<option>Dès que possible</option>
+<option>Dans moins de 2 semaines</option>
+<option>Dans 1 mois</option>
+<option>Dans 2 à 3 mois</option>
+<option>Je n'ai pas encore décidé</option>
 </select>
 
 </div>
@@ -1190,8 +1092,7 @@ Je n'ai pas encore décidé
 
 <button
 type="submit"
-class="submit"
->
+class="submit">
 Envoyer ma demande
 </button>
 
@@ -1202,11 +1103,9 @@ Aucun paiement ne vous sera demandé à cette étape.
 </div>
 
 </div>
-
 </form>
 
 </div>
-
 </section>
 
 </main>
@@ -1240,20 +1139,11 @@ professionnels et entreprises.
 
 <div class="footer-links">
 
-<a href="#services">
-Sites internet
-</a>
-
-<a href="#services">
-Tunnels de vente
-</a>
-
-<a href="#services">
-Boutiques en ligne
-</a>
+<a href="#services">Sites internet</a>
+<a href="#services">Tunnels de vente</a>
+<a href="#services">Boutiques en ligne</a>
 
 </div>
-
 </div>
 
 <div>
@@ -1270,18 +1160,20 @@ Notre méthode
 Expliquer mon projet
 </a>
 
-</div>
+<a href="suivi.html">
+Suivre ma demande
+</a>
 
+</div>
 </div>
 
 </div>
 
 <div class="copyright">
-© 2026 Nexora — Tous droits réservés.
+©️ 2026 Nexora — Tous droits réservés.
 </div>
 
 </div>
-
 </footer>
 
 <script>
@@ -1458,7 +1350,8 @@ alert(
 "Votre demande a bien été envoyée à Nexora.\n\n" +
 "Numéro de demande : " +
 numeroDemande +
-"\n\nNous étudierons votre projet et vous contacterons prochainement."
+"\n\nConservez bien ce numéro. Il vous permettra de suivre l'avancement de votre demande dans l'espace « Suivre ma demande ».\n\n" +
+"Nous étudierons votre projet et vous contacterons prochainement."
 );
 
 
