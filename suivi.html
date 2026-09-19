@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Suivre ma demande | Nexora</title>
+
+<style>
+:root{
+  --black:#080808;
+  --gold:#d9a126;
+  --gold-dark:#a87000;
+  --white:#ffffff;
+  --soft:#f5f5f5;
+  --border:#e5e5e5;
+  --gray:#777;
+  --green:#16803a;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f5f5f5;
+  color:#151515;
+}
+
+button,input{
+  font:inherit;
+}
+
+/* HEADER */
+
+header{
+  background:#070707;
+  color:white;
+}
+
+.header-inner{
+  width:min(1100px,92%);
+  min-height:76px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo{
+  width:140px;
+  display:block;
+}
+
+.home-link{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  border:1px solid #333;
+  padding:10px 14px;
+  border-radius:8px;
+}
+
+/* PAGE */
+
+main{
+  width:min(760px,92%);
+  margin:55px auto 80px;
+}
+
+.intro{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.eyebrow{
+  color:var(--gold-dark);
+  font-size:12px;
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
+
+.intro h1{
+  font-size:38px;
+  margin-top:9px;
+}
+
+.intro p{
+  color:#777;
+  line-height:1.6;
+  max-width:590px;
+  margin:12px auto 0;
+}
+
+/* RECHERCHE */
+
+.search-card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:28px;
+}
+
+.search-card label{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:9px;
+}
+
+.search-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+}
+
+#numero{
+  width:100%;
+  padding:15px;
+  border:1px solid #d7d7d7;
+  border-radius:9px;
+  outline:none;
+  text-transform:uppercase;
+}
+
+#numero:focus{
+  border-color:var(--gold);
+}
+
+.search-button{
+  border:0;
+  background:#090909;
+  color:white;
+  border-radius:9px;
+  padding:0 23px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.search-button:disabled{
+  opacity:.6;
+}
+
+.example{
+  color:#999;
+  font-size:12px;
+  margin-top:9px;
+}
+
+.message{
+  display:none;
+  margin-top:17px;
+  padding:14px;
+  border-radius:9px;
+  font-size:14px;
+}
+
+.message.error{
+  display:block;
+  background:#fff0f0;
+  color:#a51d15;
+}
+
+/* RÉSULTAT */
+
+#result{
+  display:none;
+  margin-top:22px;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+}
+
+.result-header{
+  background:#090909;
+  color:white;
+  padding:27px;
+}
+
+.result-header small{
+  color:#c7c7c7;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.result-number{
+  color:#e2ad39;
+  font-size:22px;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.result-body{
+  padding:28px;
+}
+
+.project-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  padding-bottom:25px;
+  border-bottom:1px solid #eee;
+}
+
+.info-label{
+  display:block;
+  color:#888;
+  font-size:11px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.info-value{
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* STATUT */
+
+.current-status{
+  margin:25px 0;
+  padding:18px;
+  background:#faf7ef;
+  border:1px solid #eee2c5;
+  border-radius:12px;
+}
+
+.current-status span{
+  display:block;
+  color:#777;
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.current-status strong{
+  font-size:21px;
+  color:#8b6200;
+}
+
+/* ÉTAPES */
+
+.progress-title{
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.steps{
+  display:flex;
+  flex-direction:column;
+}
+
+.step{
+  position:relative;
+  display:flex;
+  gap:15px;
+  min-height:70px;
+}
+
+.step-circle{
+  width:32px;
+  height:32px;
+  flex:0 0 32px;
+  border-radius:50%;
+  border:2px solid #d4d4d4;
+  background:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:14px;
+  font-weight:bold;
+  color:#aaa;
+  position:relative;
+  z-index:2;
+}
+
+.step:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  left:15px;
+  top:32px;
+  width:2px;
+  height:38px;
+  background:#ddd;
+}
+
+.step.done .step-circle{
+  background:#111;
+  border-color:#111;
+  color:white;
+}
+
+.step.done:not(:last-child)::after{
+  background:#111;
+}
+
+.step.current .step-circle{
+  border-color:var(--gold);
+  background:var(--gold);
+  color:#111;
+}
+
+.step-content{
+  padding-top:5px;
+}
+
+.step-content strong{
+  display:block;
+  font-size:15px;
+}
+
+.step-content span{
+  display:block;
+  color:#999;
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  color:#888;
+  font-size:12px;
+  padding:25px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .header-inner{
+    min-height:70px;
+  }
+
+  .logo{
+    width:120px;
+  }
+
+  .home-link{
+    font-size:12px;
+    padding:9px 11px;
+  }
+
+  main{
+    margin-top:35px;
+  }
+
+  .intro h1{
+    font-size:30px;
+  }
+
+  .search-card{
+    padding:20px;
+  }
+
+  .search-row{
+    grid-template-columns:1fr;
+  }
+
+  .search-button{
+    padding:14px;
+    width:100%;
+  }
+
+  .project-info{
+    grid-template-columns:1fr;
+  }
+
+  .result-body{
+    padding:21px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+
+    <img
+      src="logo-nexora.jpg"
+      alt="Nexora"
+      class="logo">
+
+    <a
+      href="index.html"
+      class="home-link">
+      Retour au site
+    </a>
+
+  </div>
+</header>
+
+
+<main>
+
+<section class="intro">
+
+  <span class="eyebrow">
+    Espace client
+  </span>
+
+  <h1>Suivre ma demande</h1>
+
+  <p>
+    Entrez le numéro de demande reçu après l'envoi
+    de votre projet pour connaître son état d'avancement.
+  </p>
+
+</section>
+
+
+<section class="search-card">
+
+  <form id="trackingForm">
+
+    <label for="numero">
+      Numéro de demande
+    </label>
+
+    <div class="search-row">
+
+      <input
+        type="text"
+        id="numero"
+        placeholder="NX-XXXXXXXX-XXX"
+        autocomplete="off"
+        required>
+
+      <button
+        type="submit"
+        class="search-button"
+        id="searchButton">
+        Rechercher
+      </button>
+
+    </div>
+
+    <div class="example">
+      Exemple : NX-39094210-197
+    </div>
+
+  </form>
+
+  <div
+    id="message"
+    class="message">
+  </div>
+
+</section>
+
+
+<section id="result">
+
+  <div class="result-header">
+
+    <small>
+      Numéro de demande
+    </small>
+
+    <div
+      class="result-number"
+      id="resultNumber">
+    </div>
+
+  </div>
+
+
+  <div class="result-body">
+
+    <div class="project-info">
+
+      <div>
+        <span class="info-label">
+          Service demandé
+        </span>
+
+        <div
+          class="info-value"
+          id="resultService">
+        </div>
+      </div>
+
+
+      <div>
+        <span class="info-label">
+          Date de la demande
+        </span>
+
+        <div
+          class="info-value"
+          id="resultDate">
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="current-status">
+
+      <span>
+        Statut actuel
+      </span>
+
+      <strong id="resultStatus"></strong>
+
+    </div>
+
+
+    <h2 class="progress-title">
+      Avancement du projet
+    </h2>
+
+
+    <div class="steps">
+
+      <div
+        class="step"
+        data-status="Nouvelle">
+
+        <div class="step-circle">1</div>
+
+        <div class="step-content">
+          <strong>Demande reçue</strong>
+          <span>
+            Votre demande a été enregistrée.
+          </span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="step"
+        data-status="En discussion">
+
+        <div class="step-circle">2</div>
+
+        <div class="step-content">
+          <strong>En discussion</strong>
+          <span>
+            Nexora étudie votre projet avec vous.
+          </span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="step"
+        data-status="Acceptée">
+
+        <div class="step-circle">3</div>
+
+        <div class="step-content">
+          <strong>Acceptée</strong>
+          <span>
+            Votre projet a été accepté.
+          </span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="step"
+        data-status="En cours">
+
+        <div class="step-circle">4</div>
+
+        <div class="step-content">
+          <strong>En cours</strong>
+          <span>
+            La réalisation de votre projet est en cours.
+          </span>
+        </div>
+
+      </div>
+
+
+      <div
+        class="step"
+        data-status="Terminée">
+
+        <div class="step-circle">5</div>
+
+        <div class="step-content">
+          <strong>Terminée</strong>
+          <span>
+            Votre projet est terminé.
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+  © Nexora — Solutions digitales
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* ==============================
+   SUPABASE
+============================== */
+
+const SUPABASE_URL =
+"https://bfegrpipkgpuificmgwi.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_E9mwl-2QpyIIsh3gCgt_6w_naHoPtGa";
+
+const db =
+window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* ==============================
+   ÉLÉMENTS
+============================== */
+
+const form =
+document.getElementById("trackingForm");
+
+const numeroInput =
+document.getElementById("numero");
+
+const searchButton =
+document.getElementById("searchButton");
+
+const message =
+document.getElementById("message");
+
+const result =
+document.getElementById("result");
+
+
+/* ==============================
+   RECHERCHE
+============================== */
+
+form.addEventListener(
+"submit",
+async function(e){
+
+  e.preventDefault();
+
+  const numero =
+  numeroInput.value
+  .trim()
+  .toUpperCase();
+
+  hideMessage();
+
+  result.style.display =
+  "none";
+
+
+  if(!numero){
+
+    showError(
+      "Veuillez entrer votre numéro de demande."
+    );
+
+    return;
+  }
+
+
+  searchButton.disabled =
+  true;
+
+  searchButton.textContent =
+  "Recherche...";
+
+
+  const { data,error } =
+  await db.rpc(
+    "suivre_demande",
+    {
+      p_numero:numero
+    }
+  );
+
+
+  searchButton.disabled =
+  false;
+
+  searchButton.textContent =
+  "Rechercher";
+
+
+  if(error){
+
+    console.error(error);
+
+    showError(
+      "Impossible de consulter votre demande pour le moment."
+    );
+
+    return;
+  }
+
+
+  if(
+    !data ||
+    data.length === 0
+  ){
+
+    showError(
+      "Aucune demande ne correspond à ce numéro. Vérifiez le numéro puis réessayez."
+    );
+
+    return;
+  }
+
+
+  displayRequest(
+    data[0]
+  );
+
+});
+
+
+/* ==============================
+   AFFICHER LE RÉSULTAT
+============================== */
+
+function displayRequest(item){
+
+  document
+  .getElementById("resultNumber")
+  .textContent =
+  item.numero_demande || "-";
+
+
+  document
+  .getElementById("resultService")
+  .textContent =
+  item.service || "-";
+
+
+  document
+  .getElementById("resultStatus")
+  .textContent =
+  item.statut || "Nouvelle";
+
+
+  const date =
+  item.created_at
+  ?
+  new Date(
+    item.created_at
+  ).toLocaleDateString(
+    "fr-FR",
+    {
+      day:"2-digit",
+      month:"2-digit",
+      year:"numeric"
+    }
+  )
+  :
+  "-";
+
+
+  document
+  .getElementById("resultDate")
+  .textContent =
+  date;
+
+
+  updateProgress(
+    item.statut || "Nouvelle"
+  );
+
+
+  result.style.display =
+  "block";
+
+
+  result.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+}
+
+
+/* ==============================
+   PROGRESSION
+============================== */
+
+function updateProgress(
+currentStatus
+){
+
+  const statuses = [
+    "Nouvelle",
+    "En discussion",
+    "Acceptée",
+    "En cours",
+    "Terminée"
+  ];
+
+
+  const currentIndex =
+  statuses.indexOf(
+    currentStatus
+  );
+
+
+  const steps =
+  document.querySelectorAll(
+    ".step"
+  );
+
+
+  steps.forEach(
+  function(step,index){
+
+    step.classList.remove(
+      "done",
+      "current"
+    );
+
+
+    const circle =
+    step.querySelector(
+      ".step-circle"
+    );
+
+
+    circle.textContent =
+    index + 1;
+
+
+    if(
+      currentIndex >= 0 &&
+      index < currentIndex
+    ){
+
+      step.classList.add(
+        "done"
+      );
+
+      circle.textContent =
+      "✓";
+
+    }
+
+
+    if(
+      currentIndex >= 0 &&
+      index === currentIndex
+    ){
+
+      step.classList.add(
+        "current"
+      );
+
+    }
+
+  });
+
+}
+
+
+/* ==============================
+   MESSAGES
+============================== */
+
+function showError(text){
+
+  message.textContent =
+  text;
+
+  message.className =
+  "message error";
+
+}
+
+
+function hideMessage(){
+
+  message.style.display =
+  "none";
+
+  message.textContent =
+  "";
+
+}
+
+</script>
+
+</body>
+</html>
