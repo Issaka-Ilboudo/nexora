@@ -224,7 +224,7 @@ main{
 /* STATUT */
 
 .current-status{
-  margin:25px 0;
+  margin:25px 0 14px;
   padding:18px;
   background:#faf7ef;
   border:1px solid #eee2c5;
@@ -241,6 +241,46 @@ main{
 .current-status strong{
   font-size:21px;
   color:#8b6200;
+}
+
+/* MESSAGE DYNAMIQUE */
+
+.status-message{
+  margin-bottom:27px;
+  padding:18px;
+  border:1px solid #e7e7e7;
+  border-radius:12px;
+  background:#fafafa;
+}
+
+.status-message-label{
+  display:block;
+  color:#888;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin-bottom:7px;
+}
+
+.status-message strong{
+  display:block;
+  font-size:16px;
+  margin-bottom:7px;
+}
+
+.status-message p{
+  color:#666;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.status-message.completed{
+  background:#f0f8f2;
+  border-color:#cbe4d1;
+}
+
+.status-message.completed strong{
+  color:var(--green);
 }
 
 /* ÉTAPES */
@@ -319,6 +359,30 @@ main{
   color:#999;
   font-size:12px;
   margin-top:4px;
+  line-height:1.45;
+}
+
+/* NOTE WHATSAPP */
+
+.delivery-note{
+  margin-top:24px;
+  padding:18px;
+  border-radius:12px;
+  background:#090909;
+  color:white;
+}
+
+.delivery-note strong{
+  display:block;
+  color:var(--gold);
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+.delivery-note p{
+  color:#ccc;
+  font-size:13px;
+  line-height:1.6;
 }
 
 /* FOOTER */
@@ -411,8 +475,8 @@ footer{
   <h1>Suivre ma demande</h1>
 
   <p>
-    Entrez le numéro de demande reçu après l'envoi
-    de votre projet pour connaître son état d'avancement.
+    Entrez votre numéro de demande Nexora pour consulter
+    l'état d'avancement de votre projet.
   </p>
 
 </section>
@@ -515,6 +579,21 @@ footer{
     </div>
 
 
+    <div
+      class="status-message"
+      id="statusMessage">
+
+      <span class="status-message-label">
+        Informations sur votre projet
+      </span>
+
+      <strong id="statusMessageTitle"></strong>
+
+      <p id="statusMessageText"></p>
+
+    </div>
+
+
     <h2 class="progress-title">
       Avancement du projet
     </h2>
@@ -531,7 +610,7 @@ footer{
         <div class="step-content">
           <strong>Demande reçue</strong>
           <span>
-            Votre demande a été enregistrée.
+            Votre demande a bien été enregistrée par Nexora.
           </span>
         </div>
 
@@ -547,7 +626,7 @@ footer{
         <div class="step-content">
           <strong>En discussion</strong>
           <span>
-            Nexora étudie votre projet avec vous.
+            Nous échangeons avec vous afin de préciser votre projet.
           </span>
         </div>
 
@@ -563,7 +642,7 @@ footer{
         <div class="step-content">
           <strong>Acceptée</strong>
           <span>
-            Votre projet a été accepté.
+            Votre projet a été validé et peut passer à l'étape de réalisation.
           </span>
         </div>
 
@@ -579,7 +658,7 @@ footer{
         <div class="step-content">
           <strong>En cours</strong>
           <span>
-            La réalisation de votre projet est en cours.
+            L'équipe Nexora travaille actuellement sur votre projet.
           </span>
         </div>
 
@@ -595,11 +674,26 @@ footer{
         <div class="step-content">
           <strong>Terminée</strong>
           <span>
-            Votre projet est terminé.
+            Votre projet est terminé et prêt pour sa livraison finale.
           </span>
         </div>
 
       </div>
+
+    </div>
+
+
+    <div class="delivery-note">
+
+      <strong>
+        Échanges et livraison
+      </strong>
+
+      <p>
+        Les échanges concernant la réalisation de votre projet,
+        les éventuelles corrections et la livraison finale sont
+        effectués directement avec Nexora via WhatsApp.
+      </p>
 
     </div>
 
@@ -654,6 +748,15 @@ document.getElementById("message");
 
 const result =
 document.getElementById("result");
+
+const statusMessage =
+document.getElementById("statusMessage");
+
+const statusMessageTitle =
+document.getElementById("statusMessageTitle");
+
+const statusMessageText =
+document.getElementById("statusMessageText");
 
 
 /* ==============================
@@ -789,6 +892,11 @@ function displayRequest(item){
   date;
 
 
+  updateStatusMessage(
+    item.statut || "Nouvelle"
+  );
+
+
   updateProgress(
     item.statut || "Nouvelle"
   );
@@ -802,6 +910,92 @@ function displayRequest(item){
     behavior:"smooth",
     block:"start"
   });
+
+}
+
+
+/* ==============================
+   MESSAGE SELON LE STATUT
+============================== */
+
+function updateStatusMessage(
+currentStatus
+){
+
+  statusMessage.classList.remove(
+    "completed"
+  );
+
+
+  if(
+    currentStatus ===
+    "En discussion"
+  ){
+
+    statusMessageTitle.textContent =
+    "Votre projet est à l'étude";
+
+    statusMessageText.textContent =
+    "Nous échangeons avec vous afin de bien comprendre vos besoins et de préparer la suite de votre projet.";
+
+    return;
+  }
+
+
+  if(
+    currentStatus ===
+    "Acceptée"
+  ){
+
+    statusMessageTitle.textContent =
+    "Votre projet a été accepté";
+
+    statusMessageText.textContent =
+    "Votre projet a été validé. Les prochaines informations nécessaires au démarrage vous seront communiquées directement par Nexora.";
+
+    return;
+  }
+
+
+  if(
+    currentStatus ===
+    "En cours"
+  ){
+
+    statusMessageTitle.textContent =
+    "Votre projet est en cours de réalisation";
+
+    statusMessageText.textContent =
+    "Nexora travaille actuellement sur votre projet. Les échanges, éléments nécessaires et éventuelles validations se poursuivent directement avec vous via WhatsApp.";
+
+    return;
+  }
+
+
+  if(
+    currentStatus ===
+    "Terminée"
+  ){
+
+    statusMessage.classList.add(
+      "completed"
+    );
+
+    statusMessageTitle.textContent =
+    "Votre projet est terminé";
+
+    statusMessageText.textContent =
+    "La réalisation de votre projet est terminée. La livraison finale et les informations nécessaires vous sont transmises directement par Nexora via WhatsApp.";
+
+    return;
+  }
+
+
+  statusMessageTitle.textContent =
+  "Votre demande a bien été reçue";
+
+  statusMessageText.textContent =
+  "Nexora a enregistré votre demande. Elle sera examinée afin de déterminer les prochaines étapes de votre projet.";
 
 }
 
@@ -907,6 +1101,31 @@ function hideMessage(){
 
   message.textContent =
   "";
+
+}
+
+
+/* ==============================
+   NUMÉRO DANS L'URL
+============================== */
+
+const params =
+new URLSearchParams(
+  window.location.search
+);
+
+const numeroFromUrl =
+params.get("numero");
+
+
+if(numeroFromUrl){
+
+  numeroInput.value =
+  numeroFromUrl
+  .trim()
+  .toUpperCase();
+
+  form.requestSubmit();
 
 }
 
