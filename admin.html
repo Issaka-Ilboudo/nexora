@@ -14,6 +14,7 @@
   --border:#e5e5e5;
   --gray:#777;
   --red:#b42318;
+  --green:#137333;
 }
 
 *{
@@ -28,8 +29,12 @@ body{
   color:#151515;
 }
 
-button,input,select{
+button,input,select,textarea{
   font:inherit;
+}
+
+button{
+  cursor:pointer;
 }
 
 /* =========================
@@ -86,15 +91,26 @@ button,input,select{
   margin-bottom:7px;
 }
 
-.field input{
+.field input,
+.field select,
+.field textarea{
   width:100%;
   padding:14px;
   border:1px solid #ddd;
   border-radius:9px;
   outline:none;
+  background:white;
 }
 
-.field input:focus{
+.field textarea{
+  min-height:115px;
+  resize:vertical;
+  line-height:1.5;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
   border-color:var(--gold);
 }
 
@@ -106,7 +122,6 @@ button,input,select{
   background:#090909;
   color:white;
   font-weight:bold;
-  cursor:pointer;
 }
 
 .login-button:disabled{
@@ -169,7 +184,6 @@ header{
   padding:10px 15px;
   border-radius:8px;
   font-weight:bold;
-  cursor:pointer;
 }
 
 main{
@@ -209,7 +223,6 @@ main{
   padding:11px 16px;
   border-radius:8px;
   font-weight:bold;
-  cursor:pointer;
 }
 
 /* =========================
@@ -341,7 +354,7 @@ main{
 
 .card-actions{
   display:grid;
-  grid-template-columns:1fr auto auto;
+  grid-template-columns:1fr 1fr;
   gap:9px;
   margin-top:20px;
   padding-top:17px;
@@ -356,27 +369,32 @@ main{
   background:white;
 }
 
-.details{
-  background:#090909;
-  color:white;
+.details,
+.quote,
+.delete{
   border:0;
   padding:11px 15px;
   border-radius:8px;
-  cursor:pointer;
   font-weight:bold;
+}
+
+.details{
+  background:#090909;
+  color:white;
+}
+
+.quote{
+  background:var(--gold);
+  color:#111;
 }
 
 .delete{
   background:#b42318;
   color:white;
-  border:0;
-  padding:11px 15px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:bold;
 }
 
-.delete:disabled{
+.delete:disabled,
+.quote:disabled{
   opacity:.6;
   cursor:not-allowed;
 }
@@ -388,7 +406,7 @@ main{
 }
 
 /* =========================
-   MODALE
+   MODALES
 ========================= */
 
 .modal{
@@ -424,7 +442,6 @@ main{
   border-radius:50%;
   background:#eee;
   font-size:20px;
-  cursor:pointer;
 }
 
 .detail-row{
@@ -444,6 +461,107 @@ main{
   line-height:1.5;
   overflow-wrap:anywhere;
   white-space:pre-wrap;
+}
+
+/* =========================
+   DEVIS
+========================= */
+
+.quote-intro{
+  background:#faf7ef;
+  border:1px solid #ead7a5;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:22px;
+}
+
+.quote-intro strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.quote-intro span{
+  color:#666;
+  font-size:13px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.amount-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:5px 0 20px;
+}
+
+.amount-box{
+  border:1px solid #e5e5e5;
+  background:#fafafa;
+  border-radius:12px;
+  padding:15px;
+}
+
+.amount-box span{
+  display:block;
+  color:#777;
+  font-size:11px;
+  text-transform:uppercase;
+  margin-bottom:7px;
+}
+
+.amount-box strong{
+  font-size:18px;
+}
+
+.amount-box.acompte{
+  border-color:#e3c473;
+  background:#fffaf0;
+}
+
+.quote-note{
+  font-size:12px;
+  color:#777;
+  line-height:1.5;
+  margin-bottom:18px;
+}
+
+.quote-message{
+  display:none;
+  padding:13px;
+  border-radius:9px;
+  margin-bottom:17px;
+  font-size:13px;
+}
+
+.quote-message.success{
+  display:block;
+  background:#edf8ef;
+  color:var(--green);
+}
+
+.quote-message.error{
+  display:block;
+  background:#fff0f0;
+  color:var(--red);
+}
+
+.quote-submit{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:9px;
+  background:#090909;
+  color:white;
+  font-weight:bold;
+}
+
+.quote-submit:disabled{
+  opacity:.6;
+  cursor:not-allowed;
 }
 
 /* =========================
@@ -532,7 +650,8 @@ main{
     text-align:left;
   }
 
-  .info-grid{
+  .info-grid,
+  .form-grid{
     grid-template-columns:1fr;
   }
 
@@ -542,12 +661,21 @@ main{
 
   .status,
   .details,
+  .quote,
   .delete{
     width:100%;
   }
 
+  .amount-summary{
+    grid-template-columns:1fr;
+  }
+
   .login-card{
     padding:30px 22px;
+  }
+
+  .modal-content{
+    padding:22px 18px;
   }
 }
 </style>
@@ -556,45 +684,32 @@ main{
 <body>
 
 <section id="loginPage">
-
 <div class="login-card">
 
-<img src="logo-nexora.jpg"
-alt="Nexora"
-class="login-logo">
+<img src="logo-nexora.jpg" alt="Nexora" class="login-logo">
 
 <h1>Administration</h1>
-
 <p>Connectez-vous pour gérer les demandes Nexora.</p>
 
 <form id="loginForm">
 
 <div class="field">
 <label for="adminEmail">Adresse e-mail</label>
-<input type="email"
-id="adminEmail"
-required
-autocomplete="email">
+<input type="email" id="adminEmail" required autocomplete="email">
 </div>
 
 <div class="field">
 <label for="adminPassword">Mot de passe</label>
-<input type="password"
-id="adminPassword"
-required
-autocomplete="current-password">
+<input type="password" id="adminPassword" required autocomplete="current-password">
 </div>
 
-<button type="submit"
-class="login-button"
-id="loginButton">
+<button type="submit" class="login-button" id="loginButton">
 Se connecter
 </button>
 
 <div id="errorMessage"></div>
 
 </form>
-
 </div>
 </section>
 
@@ -604,21 +719,13 @@ Se connecter
 <header>
 <div class="header-inner">
 
-<img src="logo-nexora.jpg"
-alt="Nexora"
-class="header-logo">
+<img src="logo-nexora.jpg" alt="Nexora" class="header-logo">
 
 <div class="admin-info">
-
-<span class="admin-email"
-id="connectedEmail"></span>
-
-<button class="logout"
-id="logoutButton">
-Déconnexion
-</button>
-
+<span class="admin-email" id="connectedEmail"></span>
+<button class="logout" id="logoutButton">Déconnexion</button>
 </div>
+
 </div>
 </header>
 
@@ -628,23 +735,12 @@ Déconnexion
 <div class="top">
 
 <div>
-
-<span class="eyebrow">
-Nexora Administration
-</span>
-
+<span class="eyebrow">Nexora Administration</span>
 <h1>Demandes clients</h1>
-
-<p>
-Consultez et gérez les projets reçus.
-</p>
-
+<p>Consultez et gérez les projets reçus.</p>
 </div>
 
-<button class="refresh"
-id="refreshButton">
-Actualiser
-</button>
+<button class="refresh" id="refreshButton">Actualiser</button>
 
 </div>
 
@@ -682,21 +778,18 @@ Actualiser
 <div class="requests-section">
 
 <div class="requests-header">
-
 <h2>Liste des demandes</h2>
 
-<input type="search"
+<input
+type="search"
 id="searchInput"
 class="search"
 placeholder="Rechercher un client...">
-
 </div>
 
 <div id="requestsContainer"></div>
 
-<div class="empty"
-id="emptyMessage"
-style="display:none;">
+<div class="empty" id="emptyMessage" style="display:none;">
 Aucune demande trouvée.
 </div>
 
@@ -706,21 +799,129 @@ Aucune demande trouvée.
 </section>
 
 
-<div class="modal"
-id="detailsModal">
+<!-- MODALE DÉTAILS -->
+
+<div class="modal" id="detailsModal">
 
 <div class="modal-content">
 
 <div class="modal-top">
-
 <h2>Détails de la demande</h2>
-
-<button class="close"
-id="closeModal">×</button>
-
+<button class="close" id="closeModal">×</button>
 </div>
 
 <div id="modalBody"></div>
+
+</div>
+</div>
+
+
+<!-- MODALE CRÉER DEVIS -->
+
+<div class="modal" id="quoteModal">
+
+<div class="modal-content">
+
+<div class="modal-top">
+<div>
+<span class="eyebrow">Nexora</span>
+<h2>Créer un devis</h2>
+</div>
+
+<button class="close" id="closeQuoteModal">×</button>
+</div>
+
+<div class="quote-intro">
+<strong id="quoteClientName">Client</strong>
+<span id="quoteRequestNumber"></span>
+</div>
+
+<form id="quoteForm">
+
+<input type="hidden" id="quoteRequestId">
+
+<div class="form-grid">
+
+<div class="field">
+<label for="quoteTotal">Montant total</label>
+<input
+type="number"
+id="quoteTotal"
+min="0"
+step="0.01"
+required
+placeholder="Exemple : 1000">
+</div>
+
+<div class="field">
+<label for="quoteCurrency">Devise</label>
+
+<select id="quoteCurrency" required>
+<option value="XOF">F CFA (XOF)</option>
+<option value="EUR">Euro (EUR)</option>
+<option value="USD">Dollar US (USD)</option>
+</select>
+
+</div>
+
+</div>
+
+
+<div class="amount-summary">
+
+<div class="amount-box">
+<span>Montant total</span>
+<strong id="totalPreview">0 F CFA</strong>
+</div>
+
+<div class="amount-box acompte">
+<span>Acompte 50 %</span>
+<strong id="depositPreview">0 F CFA</strong>
+</div>
+
+<div class="amount-box">
+<span>Solde 50 %</span>
+<strong id="balancePreview">0 F CFA</strong>
+</div>
+
+</div>
+
+
+<div class="field">
+<label for="quoteDescription">
+Description / prestations prévues
+</label>
+
+<textarea
+id="quoteDescription"
+required
+placeholder="Décrivez précisément ce que Nexora réalisera pour ce client."></textarea>
+</div>
+
+
+<div class="field">
+<label for="quotePaymentInstructions">
+Instructions de paiement
+</label>
+
+<textarea
+id="quotePaymentInstructions"
+required
+placeholder="Écrivez ici vous-même les coordonnées ou le moyen de paiement à utiliser pour ce client."></textarea>
+</div>
+
+
+<p class="quote-note">
+Le client devra régler 50 % du montant total avant le démarrage du projet. Les 50 % restants seront dus à la fin du projet.
+</p>
+
+<div id="quoteMessage" class="quote-message"></div>
+
+<button type="submit" class="quote-submit" id="quoteSubmitButton">
+Créer le devis
+</button>
+
+</form>
 
 </div>
 </div>
@@ -791,6 +992,27 @@ document.getElementById("detailsModal");
 
 const closeModal =
 document.getElementById("closeModal");
+
+const quoteModal =
+document.getElementById("quoteModal");
+
+const closeQuoteModal =
+document.getElementById("closeQuoteModal");
+
+const quoteForm =
+document.getElementById("quoteForm");
+
+const quoteTotal =
+document.getElementById("quoteTotal");
+
+const quoteCurrency =
+document.getElementById("quoteCurrency");
+
+const quoteSubmitButton =
+document.getElementById("quoteSubmitButton");
+
+const quoteMessage =
+document.getElementById("quoteMessage");
 
 let requests = [];
 
@@ -1118,30 +1340,11 @@ ${escapeHtml(item.entreprise || "-")}
 class="status"
 data-id="${escapeHtml(String(item.id))}">
 
-${statusOption(
-"Nouvelle",
-item.statut
-)}
-
-${statusOption(
-"En discussion",
-item.statut
-)}
-
-${statusOption(
-"Acceptée",
-item.statut
-)}
-
-${statusOption(
-"En cours",
-item.statut
-)}
-
-${statusOption(
-"Terminée",
-item.statut
-)}
+${statusOption("Nouvelle",item.statut)}
+${statusOption("En discussion",item.statut)}
+${statusOption("Acceptée",item.statut)}
+${statusOption("En cours",item.statut)}
+${statusOption("Terminée",item.statut)}
 
 </select>
 
@@ -1150,6 +1353,13 @@ item.statut
 class="details"
 data-detail-id="${escapeHtml(String(item.id))}">
 Voir les détails
+</button>
+
+
+<button
+class="quote"
+data-quote-id="${escapeHtml(String(item.id))}">
+Créer un devis
 </button>
 
 
@@ -1167,8 +1377,6 @@ requestsContainer
 
 });
 
-
-/* CHANGER STATUT */
 
 document
 .querySelectorAll(".status")
@@ -1188,8 +1396,6 @@ this.value
 });
 
 
-/* VOIR DÉTAILS */
-
 document
 .querySelectorAll(".details")
 .forEach(function(button){
@@ -1207,7 +1413,22 @@ this.dataset.detailId
 });
 
 
-/* SUPPRIMER */
+document
+.querySelectorAll(".quote")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+openQuote(
+this.dataset.quoteId
+);
+
+});
+
+});
+
 
 document
 .querySelectorAll(".delete")
@@ -1367,13 +1588,6 @@ button.textContent =
 return;
 }
 
-
-/*
-VÉRIFICATION :
-on recharge les données depuis Supabase
-après la suppression.
-*/
-
 await loadRequests();
 
 alert(
@@ -1406,87 +1620,29 @@ document
 .getElementById("modalBody")
 .innerHTML =
 
-detail(
-"Numéro de demande",
-item.numero_demande
-)
-
+detail("Numéro de demande",item.numero_demande)
 +
-
-detail(
-"Client",
-item.nom
-)
-
+detail("Client",item.nom)
 +
-
-detail(
-"Entreprise",
-item.entreprise
-)
-
+detail("Entreprise",item.entreprise)
 +
-
-detail(
-"Téléphone / WhatsApp",
-item.telephone
-)
-
+detail("Téléphone / WhatsApp",item.telephone)
 +
-
-detail(
-"E-mail",
-item.email
-)
-
+detail("E-mail",item.email)
 +
-
-detail(
-"Service",
-item.service
-)
-
+detail("Service",item.service)
 +
-
-detail(
-"Objectif",
-item.objectif
-)
-
+detail("Objectif",item.objectif)
 +
-
-detail(
-"Description du projet",
-item.description
-)
-
+detail("Description du projet",item.description)
 +
-
-detail(
-"Identité / Logo",
-item.identite_logo
-)
-
+detail("Identité / Logo",item.identite_logo)
 +
-
-detail(
-"Budget",
-item.budget
-)
-
+detail("Budget",item.budget)
 +
-
-detail(
-"Délai",
-item.delai
-)
-
+detail("Délai",item.delai)
 +
-
-detail(
-"Statut",
-item.statut
-);
+detail("Statut",item.statut);
 
 detailsModal.style.display =
 "block";
@@ -1516,6 +1672,382 @@ ${escapeHtml(value || "-")}
 `;
 
 }
+
+
+/* ==============================
+   OUVRIR CRÉATION DEVIS
+============================== */
+
+function openQuote(id){
+
+const item =
+requests.find(
+x =>
+String(x.id) ===
+String(id)
+);
+
+if(!item){
+return;
+}
+
+quoteForm.reset();
+
+document
+.getElementById("quoteRequestId")
+.value =
+String(item.id);
+
+document
+.getElementById("quoteClientName")
+.textContent =
+item.nom || "Client";
+
+document
+.getElementById("quoteRequestNumber")
+.textContent =
+(item.numero_demande || "-") +
+" — " +
+(item.service || "Service non précisé");
+
+quoteCurrency.value =
+"XOF";
+
+quoteMessage.className =
+"quote-message";
+
+quoteMessage.textContent =
+"";
+
+updateQuoteAmounts();
+
+quoteModal.style.display =
+"block";
+
+}
+
+
+/* ==============================
+   CALCUL 50 / 50
+============================== */
+
+function getCurrencyLabel(){
+
+if(
+quoteCurrency.value === "EUR"
+){
+return "€";
+}
+
+if(
+quoteCurrency.value === "USD"
+){
+return "$";
+}
+
+return "F CFA";
+
+}
+
+
+function formatAmount(
+amount
+){
+
+const number =
+Number(amount) || 0;
+
+return new Intl.NumberFormat(
+"fr-FR",
+{
+minimumFractionDigits:
+Number.isInteger(number) ? 0 : 2,
+
+maximumFractionDigits:2
+}
+).format(number);
+
+}
+
+
+function updateQuoteAmounts(){
+
+const total =
+Number(
+quoteTotal.value
+) || 0;
+
+const deposit =
+total / 2;
+
+const balance =
+total - deposit;
+
+const currency =
+getCurrencyLabel();
+
+document
+.getElementById("totalPreview")
+.textContent =
+formatAmount(total) +
+" " +
+currency;
+
+document
+.getElementById("depositPreview")
+.textContent =
+formatAmount(deposit) +
+" " +
+currency;
+
+document
+.getElementById("balancePreview")
+.textContent =
+formatAmount(balance) +
+" " +
+currency;
+
+}
+
+
+quoteTotal.addEventListener(
+"input",
+updateQuoteAmounts
+);
+
+quoteCurrency.addEventListener(
+"change",
+updateQuoteAmounts
+);
+
+
+/* ==============================
+   NUMÉRO DE DEVIS
+============================== */
+
+function generateQuoteNumber(){
+
+const year =
+new Date().getFullYear();
+
+const time =
+Date.now()
+.toString()
+.slice(-6);
+
+const random =
+Math.floor(
+100 + Math.random() * 900
+);
+
+return (
+"DEV-" +
+year +
+"-" +
+time +
+random
+);
+
+}
+
+
+/* ==============================
+   ENREGISTRER DEVIS
+============================== */
+
+quoteForm.addEventListener(
+"submit",
+async function(e){
+
+e.preventDefault();
+
+quoteMessage.className =
+"quote-message";
+
+quoteMessage.textContent =
+"";
+
+const requestId =
+document
+.getElementById("quoteRequestId")
+.value;
+
+const item =
+requests.find(
+x =>
+String(x.id) ===
+String(requestId)
+);
+
+if(!item){
+
+quoteMessage.className =
+"quote-message error";
+
+quoteMessage.textContent =
+"Impossible de retrouver cette demande.";
+
+return;
+}
+
+
+const total =
+Number(
+quoteTotal.value
+);
+
+if(
+!Number.isFinite(total) ||
+total <= 0
+){
+
+quoteMessage.className =
+"quote-message error";
+
+quoteMessage.textContent =
+"Veuillez saisir un montant valide.";
+
+return;
+}
+
+
+const deposit =
+Math.round(
+(total / 2) * 100
+) / 100;
+
+const balance =
+Math.round(
+(total - deposit) * 100
+) / 100;
+
+const description =
+document
+.getElementById("quoteDescription")
+.value
+.trim();
+
+const paymentInstructions =
+document
+.getElementById("quotePaymentInstructions")
+.value
+.trim();
+
+if(
+!description ||
+!paymentInstructions
+){
+
+quoteMessage.className =
+"quote-message error";
+
+quoteMessage.textContent =
+"Complétez la description et les instructions de paiement.";
+
+return;
+}
+
+
+quoteSubmitButton.disabled =
+true;
+
+quoteSubmitButton.textContent =
+"Création du devis...";
+
+
+const numeroDevis =
+generateQuoteNumber();
+
+
+const { error } =
+await db
+.from("Devis")
+.insert({
+
+numero_devis:
+numeroDevis,
+
+numero_demande:
+item.numero_demande,
+
+nom_client:
+item.nom || null,
+
+email_client:
+item.email || null,
+
+service:
+item.service || null,
+
+montant_total:
+total,
+
+acompte:
+deposit,
+
+solde:
+balance,
+
+devise:
+quoteCurrency.value,
+
+description:
+description,
+
+instructions_paiement:
+paymentInstructions,
+
+statut:
+"En attente"
+
+});
+
+
+quoteSubmitButton.disabled =
+false;
+
+quoteSubmitButton.textContent =
+"Créer le devis";
+
+
+if(error){
+
+console.error(error);
+
+quoteMessage.className =
+"quote-message error";
+
+quoteMessage.textContent =
+"Le devis n'a pas pu être créé. Vérifiez la configuration Supabase.";
+
+return;
+}
+
+
+quoteMessage.className =
+"quote-message success";
+
+quoteMessage.textContent =
+"Devis " +
+numeroDevis +
+" créé avec succès.";
+
+quoteTotal.value =
+"";
+
+document
+.getElementById("quoteDescription")
+.value =
+"";
+
+document
+.getElementById("quotePaymentInstructions")
+.value =
+"";
+
+updateQuoteAmounts();
+
+});
 
 
 /* ==============================
@@ -1589,7 +2121,7 @@ loginForm.reset();
 
 
 /* ==============================
-   MODALE
+   FERMER MODALES
 ============================== */
 
 closeModal.addEventListener(
@@ -1611,6 +2143,32 @@ e.target === detailsModal
 ){
 
 detailsModal.style.display =
+"none";
+
+}
+
+});
+
+
+closeQuoteModal.addEventListener(
+"click",
+function(){
+
+quoteModal.style.display =
+"none";
+
+});
+
+
+quoteModal.addEventListener(
+"click",
+function(e){
+
+if(
+e.target === quoteModal
+){
+
+quoteModal.style.display =
 "none";
 
 }
