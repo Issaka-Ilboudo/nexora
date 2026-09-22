@@ -40,7 +40,13 @@ body{
   margin:auto;
 }
 
-/* HEADER */
+a{
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* ==============================
+   HEADER
+============================== */
 
 header{
   background:#070707;
@@ -51,7 +57,7 @@ header{
 }
 
 .header-inner{
-  min-height:82px;
+  min-height:78px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -59,18 +65,18 @@ header{
 }
 
 .logo img{
-  width:155px;
+  width:145px;
   display:block;
 }
 
 nav{
   display:flex;
   align-items:center;
-  gap:25px;
+  gap:24px;
 }
 
 nav a{
-  color:#ddd;
+  color:#d8d8d8;
   text-decoration:none;
   font-size:14px;
   font-weight:600;
@@ -83,20 +89,20 @@ nav a{
 .nav-button{
   background:var(--gold);
   color:#111 !important;
-  padding:11px 19px;
+  padding:11px 18px;
   border-radius:7px;
 }
 
-/* HERO */
+/* ==============================
+   HERO
+============================== */
 
 .hero{
   background:
     radial-gradient(circle at 80% 30%,rgba(217,161,38,.15),transparent 30%),
     linear-gradient(135deg,#050505,#111);
   color:white;
-  min-height:670px;
-  display:flex;
-  align-items:center;
+  padding:105px 0;
 }
 
 .hero-grid{
@@ -113,14 +119,14 @@ nav a{
   background:#17140d;
   padding:8px 14px;
   border-radius:50px;
-  font-size:12px;
+  font-size:11px;
   font-weight:bold;
-  letter-spacing:1px;
+  letter-spacing:1.3px;
   margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:64px;
+  font-size:62px;
   line-height:1.05;
   max-width:720px;
   letter-spacing:-2px;
@@ -130,26 +136,45 @@ nav a{
   color:var(--gold);
 }
 
-.hero p{
+.hero-description{
   max-width:650px;
   color:#bdbdbd;
   font-size:18px;
-  margin:27px 0 35px;
+  margin:27px 0 32px;
+}
+
+.hero-services{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-bottom:32px;
+}
+
+.hero-services span{
+  border:1px solid #333;
+  color:#cfcfcf;
+  background:#101010;
+  border-radius:50px;
+  padding:7px 12px;
+  font-size:12px;
 }
 
 .buttons{
   display:flex;
-  gap:14px;
+  gap:12px;
   flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-block;
-  padding:15px 24px;
+  display:inline-flex;
+  min-height:50px;
+  align-items:center;
+  justify-content:center;
+  padding:14px 23px;
   border-radius:8px;
   text-decoration:none;
   font-weight:bold;
-  font-size:15px;
+  font-size:14px;
 }
 
 .btn-gold{
@@ -167,22 +192,22 @@ nav a{
   border:1px solid #292929;
   background:linear-gradient(145deg,#151515,#090909);
   border-radius:24px;
-  padding:40px;
+  padding:38px;
   box-shadow:0 30px 80px rgba(0,0,0,.35);
 }
 
 .hero-panel img{
   width:100%;
-  max-width:390px;
+  max-width:350px;
   display:block;
   margin:auto;
   border-radius:15px;
 }
 
 .hero-panel-text{
-  margin-top:30px;
+  margin-top:27px;
   border-top:1px solid #292929;
-  padding-top:25px;
+  padding-top:23px;
 }
 
 .hero-panel-text strong{
@@ -192,27 +217,52 @@ nav a{
 }
 
 .hero-panel-text span{
+  display:block;
   color:#888;
   font-size:14px;
+  margin-top:4px;
 }
 
-/* LOGO */
+/* ==============================
+   BARRE DE CONFIANCE
+============================== */
 
-.section-logo{
-  width:190px;
-  max-width:60%;
-  height:auto;
-  display:block;
-  margin:0 auto 28px;
-  border-radius:10px;
+.trust-bar{
+  border-bottom:1px solid #ededed;
+  background:white;
 }
 
-/* INTRO */
+.trust-grid{
+  min-height:95px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  align-items:center;
+}
 
-.intro{
-  padding:95px 0 45px;
+.trust-item{
+  padding:15px 30px;
   text-align:center;
+  border-right:1px solid #eee;
 }
+
+.trust-item:last-child{
+  border-right:0;
+}
+
+.trust-item strong{
+  display:block;
+  font-size:15px;
+  margin-bottom:3px;
+}
+
+.trust-item span{
+  color:#888;
+  font-size:12px;
+}
+
+/* ==============================
+   TITRES
+============================== */
 
 .eyebrow{
   color:#b57a00;
@@ -222,23 +272,33 @@ nav a{
   text-transform:uppercase;
 }
 
-.intro h2,
 .section-title{
   font-size:42px;
   line-height:1.15;
-  margin:13px auto 18px;
+  margin:13px 0 17px;
 }
 
-.intro p{
-  max-width:700px;
+.section-description{
+  color:#707070;
+  max-width:690px;
+}
+
+/* ==============================
+   SERVICES
+============================== */
+
+.services-section{
+  padding:105px 0;
+}
+
+.services-head{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto 52px;
+}
+
+.services-head .section-description{
   margin:auto;
-  color:#6d6d6d;
-}
-
-/* SERVICES */
-
-.services{
-  padding:50px 0 110px;
 }
 
 .service-grid{
@@ -249,7 +309,6 @@ nav a{
 
 .service{
   border:1px solid var(--border);
-  padding:0 32px 38px;
   border-radius:18px;
   background:#fff;
   overflow:hidden;
@@ -257,29 +316,38 @@ nav a{
 }
 
 .service-image{
-  width:calc(100% + 64px);
-  height:190px;
-  margin-left:-32px;
-  margin-bottom:30px;
+  width:100%;
+  height:205px;
   object-fit:cover;
   display:block;
 }
 
+.service-content{
+  padding:29px 30px 34px;
+}
+
+.service-number{
+  color:#b57a00;
+  font-size:11px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
 .service h3{
   font-size:22px;
-  margin-bottom:13px;
+  margin:7px 0 12px;
 }
 
 .service p{
   color:#707070;
-  font-size:15px;
+  font-size:14px;
 }
 
 .service ul{
   list-style:none;
-  margin-top:24px;
+  margin-top:21px;
   border-top:1px solid #eee;
-  padding-top:20px;
+  padding-top:18px;
 }
 
 .service li{
@@ -294,7 +362,9 @@ nav a{
   margin-right:10px;
 }
 
-/* PROCESS */
+/* ==============================
+   PROCESSUS
+============================== */
 
 .process{
   background:#090909;
@@ -303,41 +373,46 @@ nav a{
 }
 
 .process-top{
-  max-width:650px;
-  margin-bottom:55px;
+  max-width:700px;
+  margin-bottom:58px;
 }
 
-.process-top p{
+.process-top .section-description{
   color:#999;
 }
 
 .steps{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
 }
 
 .step{
-  border-top:2px solid #2b2b2b;
-  padding-top:25px;
+  border-top:2px solid #292929;
+  padding:23px 5px 0 0;
 }
 
 .step span{
   color:var(--gold);
   font-weight:bold;
-  font-size:13px;
+  font-size:11px;
+  letter-spacing:.8px;
 }
 
 .step h3{
-  margin:12px 0;
+  margin:11px 0 8px;
+  font-size:18px;
 }
 
 .step p{
-  color:#999;
-  font-size:14px;
+  color:#929292;
+  font-size:13px;
+  line-height:1.6;
 }
 
-/* POURQUOI NEXORA */
+/* ==============================
+   POURQUOI NEXORA
+============================== */
 
 .why{
   padding:105px 0;
@@ -345,39 +420,56 @@ nav a{
 
 .why-grid{
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
+  grid-template-columns:.85fr 1.15fr;
   gap:80px;
   align-items:center;
 }
 
 .why-box{
-  background:#f8f8f8;
-  border:1px solid #eee;
-  border-radius:20px;
-  padding:45px;
+  background:#0a0a0a;
+  border-radius:22px;
+  padding:50px;
 }
 
 .why-box img{
   width:100%;
-  max-width:380px;
+  max-width:360px;
   display:block;
   margin:auto;
+  border-radius:14px;
 }
 
 .reasons{
   display:grid;
-  gap:24px;
+  gap:0;
   margin-top:30px;
+  border-top:1px solid #eee;
 }
 
 .reason{
-  padding-bottom:20px;
+  padding:21px 0;
   border-bottom:1px solid #eee;
+  display:grid;
+  grid-template-columns:40px 1fr;
+  gap:15px;
+}
+
+.reason-number{
+  width:32px;
+  height:32px;
+  background:#f6edda;
+  color:#8a5e00;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .reason strong{
   display:block;
-  margin-bottom:5px;
+  margin-bottom:4px;
 }
 
 .reason p{
@@ -385,10 +477,58 @@ nav a{
   font-size:14px;
 }
 
-/* FORMULAIRE */
+/* ==============================
+   SUIVI CLIENT
+============================== */
+
+.tracking-section{
+  background:#f5f5f5;
+  padding:85px 0;
+}
+
+.tracking-card{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:20px;
+  padding:45px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:45px;
+  align-items:center;
+}
+
+.tracking-card h2{
+  font-size:31px;
+  line-height:1.2;
+  margin:8px 0 10px;
+}
+
+.tracking-card p{
+  color:#777;
+  max-width:650px;
+  font-size:14px;
+}
+
+.tracking-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:52px;
+  background:#0a0a0a;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  padding:14px 24px;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+/* ==============================
+   FORMULAIRE
+============================== */
 
 .order{
-  background:#f6f6f6;
+  background:#fff;
   padding:105px 0;
 }
 
@@ -410,6 +550,16 @@ nav a{
   border-radius:20px;
   padding:45px;
   box-shadow:0 20px 60px rgba(0,0,0,.07);
+}
+
+.form-intro{
+  background:#faf7ef;
+  border:1px solid #eee2c5;
+  border-radius:11px;
+  padding:16px;
+  margin-bottom:25px;
+  color:#66511f;
+  font-size:13px;
 }
 
 .form-grid{
@@ -477,7 +627,9 @@ textarea{
   margin-top:14px;
 }
 
-/* CONFIRMATION */
+/* ==============================
+   CONFIRMATION
+============================== */
 
 .success-modal{
   display:none;
@@ -607,7 +759,9 @@ textarea{
   cursor:pointer;
 }
 
-/* FOOTER */
+/* ==============================
+   FOOTER
+============================== */
 
 footer{
   background:#050505;
@@ -622,7 +776,7 @@ footer{
 }
 
 .footer-logo{
-  width:160px;
+  width:150px;
   margin-bottom:18px;
 }
 
@@ -651,9 +805,11 @@ footer h4{
   font-size:13px;
 }
 
-/* RESPONSIVE */
+/* ==============================
+   RESPONSIVE
+============================== */
 
-@media(max-width:850px){
+@media(max-width:950px){
 
   nav a{
     display:none;
@@ -669,8 +825,7 @@ footer h4{
   }
 
   .hero{
-    padding:70px 0;
-    min-height:auto;
+    padding:75px 0;
   }
 
   .hero-grid,
@@ -679,23 +834,148 @@ footer h4{
   }
 
   .hero h1{
-    font-size:43px;
+    font-size:47px;
   }
 
   .hero-panel{
-    padding:25px;
+    max-width:600px;
+    width:100%;
   }
 
   .service-grid{
     grid-template-columns:1fr;
   }
 
+  .service{
+    max-width:700px;
+    width:100%;
+    margin:auto;
+  }
+
   .service-image{
-    height:220px;
+    height:280px;
   }
 
   .steps{
     grid-template-columns:1fr 1fr;
+  }
+
+  .tracking-card{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+
+  .tracking-button{
+    width:max-content;
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:650px){
+
+  .container{
+    width:min(92%,1180px);
+  }
+
+  .header-inner{
+    min-height:72px;
+  }
+
+  .logo img{
+    width:112px;
+  }
+
+  .nav-button,
+  .nav-track{
+    padding:8px 9px;
+    font-size:10px;
+  }
+
+  .nav-track{
+    border:1px solid #4b4025;
+    border-radius:7px;
+  }
+
+  .hero{
+    padding:60px 0;
+  }
+
+  .hero h1{
+    font-size:38px;
+    letter-spacing:-1px;
+  }
+
+  .hero-description{
+    font-size:16px;
+  }
+
+  .hero-panel{
+    padding:24px;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+    padding:12px 0;
+  }
+
+  .trust-item{
+    border-right:0;
+    border-bottom:1px solid #eee;
+    padding:14px;
+  }
+
+  .trust-item:last-child{
+    border-bottom:0;
+  }
+
+  .section-title{
+    font-size:33px;
+  }
+
+  .services-section,
+  .process,
+  .why,
+  .order{
+    padding:75px 0;
+  }
+
+  .service-image{
+    height:200px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .step{
+    padding-bottom:14px;
+  }
+
+  .why-box{
+    padding:30px;
+  }
+
+  .tracking-section{
+    padding:60px 0;
+  }
+
+  .tracking-card{
+    padding:27px 22px;
+  }
+
+  .tracking-card h2{
+    font-size:26px;
+  }
+
+  .tracking-button{
+    width:100%;
+  }
+
+  .form-card{
+    padding:27px 19px;
   }
 
   .form-grid{
@@ -704,57 +984,6 @@ footer h4{
 
   .full{
     grid-column:auto;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .intro h2,
-  .section-title{
-    font-size:34px;
-  }
-}
-
-@media(max-width:520px){
-
-  .header-inner{
-    min-height:74px;
-  }
-
-  .logo img{
-    width:115px;
-  }
-
-  .nav-button,
-  .nav-track{
-    padding:8px 9px;
-    font-size:11px;
-  }
-
-  .nav-track{
-    border:1px solid #4b4025;
-    border-radius:7px;
-  }
-
-  .hero h1{
-    font-size:37px;
-  }
-
-  .steps{
-    grid-template-columns:1fr;
-  }
-
-  .form-card{
-    padding:25px 18px;
-  }
-
-  .service-image{
-    height:185px;
-  }
-
-  .section-logo{
-    width:155px;
   }
 
   .success-card{
@@ -786,17 +1015,27 @@ footer h4{
 </a>
 
 <nav>
-<a href="#accueil">Accueil</a>
-<a href="#services">Services</a>
-<a href="#fonctionnement">Fonctionnement</a>
+
+<a href="#accueil">
+Accueil
+</a>
+
+<a href="#services">
+Services
+</a>
+
+<a href="#fonctionnement">
+Fonctionnement
+</a>
 
 <a href="suivi.html" class="nav-track">
-Suivre ma demande
+Suivre
 </a>
 
 <a href="#commander" class="nav-button">
-Expliquer mon projet
+Démarrer un projet
 </a>
+
 </nav>
 
 </div>
@@ -804,7 +1043,9 @@ Expliquer mon projet
 
 <main>
 
-<!-- ACCUEIL -->
+<!-- ==============================
+     ACCUEIL
+============================== -->
 
 <section class="hero" id="accueil">
 
@@ -813,27 +1054,31 @@ Expliquer mon projet
 <div>
 
 <span class="badge">
-AGENCE DIGITALE • NEXORA
+SOLUTIONS DIGITALES SUR MESURE
 </span>
 
 <h1>
-Transformons vos idées en
-<span class="gold">solutions digitales.</span>
+Votre projet mérite une
+<span class="gold">présence digitale professionnelle.</span>
 </h1>
 
-<p>
-Nous concevons des sites internet, tunnels de vente et boutiques
-en ligne sur mesure pour les entrepreneurs, professionnels et entreprises.
+<p class="hero-description">
+Nexora accompagne les entrepreneurs, professionnels et entreprises
+dans la création de solutions digitales adaptées à leurs objectifs.
 </p>
+
+<div class="hero-services">
+
+<span>Sites internet</span>
+<span>Tunnels de vente</span>
+<span>Boutiques en ligne</span>
+
+</div>
 
 <div class="buttons">
 
 <a href="#commander" class="btn btn-gold">
-Expliquer mon projet
-</a>
-
-<a href="suivi.html" class="btn btn-dark">
-Suivre ma demande
+Démarrer mon projet
 </a>
 
 <a href="#services" class="btn btn-dark">
@@ -844,61 +1089,91 @@ Découvrir nos services
 
 </div>
 
+
 <div class="hero-panel">
-
-<img src="logo-nexora.jpg" alt="Logo Nexora">
-
-<div class="hero-panel-text">
-
-<strong>
-Votre vision. Notre expertise.
-</strong>
-
-<span>
-Une solution digitale pensée autour de votre projet.
-</span>
-
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- EXPERTISES -->
-
-<section class="intro" id="services">
-
-<div class="container">
 
 <img
 src="logo-nexora.jpg"
 alt="Nexora"
-class="section-logo"
 >
 
-<span class="eyebrow">
-Nos expertises
+<div class="hero-panel-text">
+
+<strong>
+De l'idée à la réalisation.
+</strong>
+
+<span>
+Une solution pensée autour de votre activité,
+de vos objectifs et de vos clients.
 </span>
 
-<h2>
-Une solution adaptée à chaque ambition.
-</h2>
+</div>
 
-<p>
-Que votre objectif soit de présenter votre entreprise, vendre vos
-produits ou transformer davantage de visiteurs en clients, Nexora
-construit une solution adaptée à vos besoins.
-</p>
+</div>
 
 </div>
 </section>
 
-<!-- SERVICES -->
 
-<section class="services">
+<!-- ==============================
+     CONFIANCE
+============================== -->
 
-<div class="container service-grid">
+<section class="trust-bar">
+
+<div class="container trust-grid">
+
+<div class="trust-item">
+<strong>Sur mesure</strong>
+<span>Une solution adaptée à votre projet</span>
+</div>
+
+<div class="trust-item">
+<strong>Suivi en ligne</strong>
+<span>Consultez l'avancement de votre demande</span>
+</div>
+
+<div class="trust-item">
+<strong>Accompagnement</strong>
+<span>Des échanges jusqu'à la livraison</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==============================
+     SERVICES
+============================== -->
+
+<section
+class="services-section"
+id="services"
+>
+
+<div class="container">
+
+<div class="services-head">
+
+<span class="eyebrow">
+Nos services
+</span>
+
+<h2 class="section-title">
+Trois solutions pour développer votre présence digitale.
+</h2>
+
+<p class="section-description">
+Votre besoin détermine la solution. Nexora étudie votre projet
+avant de construire une plateforme adaptée à votre activité.
+</p>
+
+</div>
+
+
+<div class="service-grid">
 
 <article class="service">
 
@@ -908,11 +1183,19 @@ alt="Création de sites internet"
 class="service-image"
 >
 
-<h3>Sites internet</h3>
+<div class="service-content">
+
+<span class="service-number">
+SERVICE 01
+</span>
+
+<h3>
+Sites internet
+</h3>
 
 <p>
-Une présence digitale professionnelle conçue pour présenter
-votre activité et renforcer votre crédibilité.
+Présentez votre activité avec une plateforme claire,
+professionnelle et adaptée à votre image.
 </p>
 
 <ul>
@@ -922,7 +1205,9 @@ votre activité et renforcer votre crédibilité.
 <li>Fonctionnalités sur mesure</li>
 </ul>
 
+</div>
 </article>
+
 
 <article class="service">
 
@@ -932,11 +1217,19 @@ alt="Création de tunnels de vente"
 class="service-image"
 >
 
-<h3>Tunnels de vente</h3>
+<div class="service-content">
+
+<span class="service-number">
+SERVICE 02
+</span>
+
+<h3>
+Tunnels de vente
+</h3>
 
 <p>
-Un parcours digital structuré pour présenter votre offre et
-guider vos prospects jusqu'à l'action.
+Structurez le parcours de vos prospects afin de présenter
+clairement votre offre et les guider vers l'action.
 </p>
 
 <ul>
@@ -946,7 +1239,9 @@ guider vos prospects jusqu'à l'action.
 <li>Structure personnalisée</li>
 </ul>
 
+</div>
 </article>
+
 
 <article class="service">
 
@@ -956,11 +1251,19 @@ alt="Création de boutiques en ligne"
 class="service-image"
 >
 
-<h3>Boutiques en ligne</h3>
+<div class="service-content">
+
+<span class="service-number">
+SERVICE 03
+</span>
+
+<h3>
+Boutiques en ligne
+</h3>
 
 <p>
-Une boutique professionnelle pour présenter votre catalogue
-et recevoir vos commandes en ligne.
+Présentez vos produits dans une boutique structurée
+et recevez vos commandes directement en ligne.
 </p>
 
 <ul>
@@ -970,66 +1273,123 @@ et recevoir vos commandes en ligne.
 <li>Paiement selon le projet</li>
 </ul>
 
+</div>
 </article>
+
+</div>
 
 </div>
 </section>
 
-<!-- FONCTIONNEMENT -->
 
-<section class="process" id="fonctionnement">
+<!-- ==============================
+     FONCTIONNEMENT
+============================== -->
+
+<section
+class="process"
+id="fonctionnement"
+>
 
 <div class="container">
 
 <div class="process-top">
 
 <span class="eyebrow">
-Notre méthode
+Comment ça fonctionne
 </span>
 
 <h2 class="section-title">
-De votre idée à votre projet digital.
+Un parcours clair du premier contact à la livraison.
 </h2>
 
-<p>
-Un processus simple pour comprendre votre besoin avant
-de construire la solution.
+<p class="section-description">
+Vous pouvez suivre l'état de votre demande pendant que
+Nexora vous accompagne dans les différentes étapes du projet.
 </p>
 
 </div>
+
 
 <div class="steps">
 
 <div class="step">
+
 <span>ÉTAPE 01</span>
-<h3>Votre demande</h3>
+
+<h3>
+Demande
+</h3>
+
 <p>
-Vous décrivez votre activité, vos objectifs et la solution souhaitée.
+Vous nous expliquez votre activité,
+votre objectif et ce que vous souhaitez créer.
 </p>
+
 </div>
 
+
 <div class="step">
+
 <span>ÉTAPE 02</span>
-<h3>Analyse</h3>
+
+<h3>
+Discussion
+</h3>
+
 <p>
-Nous étudions votre projet afin d'identifier les besoins essentiels.
+Nous échangeons avec vous afin de préciser
+vos besoins et les éléments du projet.
 </p>
+
 </div>
 
+
 <div class="step">
+
 <span>ÉTAPE 03</span>
-<h3>Proposition</h3>
+
+<h3>
+Devis
+</h3>
+
 <p>
-Une solution adaptée, un délai et les prochaines étapes vous sont proposés.
+Vous recevez une proposition adaptée
+et pouvez accepter votre devis.
 </p>
+
 </div>
 
+
 <div class="step">
+
 <span>ÉTAPE 04</span>
-<h3>Réalisation</h3>
+
+<h3>
+Réalisation
+</h3>
+
 <p>
-Votre projet est construit puis préparé pour sa mise en ligne.
+Après validation des conditions du projet,
+Nexora commence sa réalisation.
 </p>
+
+</div>
+
+
+<div class="step">
+
+<span>ÉTAPE 05</span>
+
+<h3>
+Livraison
+</h3>
+
+<p>
+Le projet finalisé vous est transmis
+directement par Nexora via WhatsApp.
+</p>
+
 </div>
 
 </div>
@@ -1037,15 +1397,24 @@ Votre projet est construit puis préparé pour sa mise en ligne.
 </div>
 </section>
 
-<!-- POURQUOI NEXORA -->
+
+<!-- ==============================
+     POURQUOI NEXORA
+============================== -->
 
 <section class="why">
 
 <div class="container why-grid">
 
 <div class="why-box">
-<img src="logo-nexora.jpg" alt="Nexora">
+
+<img
+src="logo-nexora.jpg"
+alt="Nexora"
+>
+
 </div>
+
 
 <div>
 
@@ -1054,56 +1423,163 @@ Pourquoi Nexora
 </span>
 
 <h2 class="section-title">
-Votre projet mérite plus qu'un simple site.
+Un projet digital organisé autour de votre besoin.
 </h2>
+
+<p class="section-description">
+Nous privilégions une méthode claire :
+comprendre votre objectif avant de construire votre solution.
+</p>
+
 
 <div class="reasons">
 
 <div class="reason">
-<strong>Conception sur mesure</strong>
-<p>
-Nous partons de vos besoins et de vos objectifs plutôt que
-d'une solution identique pour tout le monde.
-</p>
+
+<div class="reason-number">
+01
 </div>
 
-<div class="reason">
-<strong>Design professionnel</strong>
+<div>
+
+<strong>
+Conception sur mesure
+</strong>
+
 <p>
-Une présentation claire et moderne adaptée aux ordinateurs,
+Chaque projet est étudié selon votre activité,
+vos besoins et vos objectifs.
+</p>
+
+</div>
+</div>
+
+
+<div class="reason">
+
+<div class="reason-number">
+02
+</div>
+
+<div>
+
+<strong>
+Expérience professionnelle
+</strong>
+
+<p>
+Une interface claire et adaptée aux ordinateurs,
 tablettes et smartphones.
 </p>
+
 </div>
+</div>
+
 
 <div class="reason">
-<strong>Accompagnement du projet</strong>
-<p>
-Votre demande est étudiée avant la réalisation afin de
-construire une solution cohérente.
-</p>
+
+<div class="reason-number">
+03
 </div>
+
+<div>
+
+<strong>
+Suivi de votre demande
+</strong>
+
+<p>
+Votre numéro Nexora vous permet de consulter
+l'état d'avancement de votre projet.
+</p>
 
 </div>
 </div>
+
+
+<div class="reason">
+
+<div class="reason-number">
+04
+</div>
+
+<div>
+
+<strong>
+Échanges directs
+</strong>
+
+<p>
+Les échanges nécessaires à la réalisation et
+à la livraison se poursuivent directement avec Nexora.
+</p>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 </section>
 
-<!-- FORMULAIRE -->
 
-<section class="order" id="commander">
+<!-- ==============================
+     SUIVI CLIENT
+============================== -->
+
+<section class="tracking-section">
+
+<div class="container">
+
+<div class="tracking-card">
+
+<div>
+
+<span class="eyebrow">
+Déjà client ?
+</span>
+
+<h2>
+Suivez l'avancement de votre demande.
+</h2>
+
+<p>
+Utilisez le numéro NX reçu lors de l'envoi de votre demande
+pour consulter son statut et les différentes étapes de votre projet.
+</p>
+
+</div>
+
+<a
+href="suivi.html"
+class="tracking-button"
+>
+Suivre ma demande
+</a>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ==============================
+     FORMULAIRE
+============================== -->
+
+<section
+class="order"
+id="commander"
+>
 
 <div class="container">
 
 <div class="order-head">
 
-<img
-src="logo-nexora.jpg"
-alt="Nexora"
-class="section-logo"
->
-
 <span class="eyebrow">
-Votre projet
+Démarrer un projet
 </span>
 
 <h2 class="section-title">
@@ -1111,35 +1587,89 @@ Parlez-nous de ce que vous voulez créer.
 </h2>
 
 <p>
-Expliquez votre projet en détail afin que nous puissions
-comprendre précisément vos besoins.
+Plus votre demande est précise, plus nous pourrons
+comprendre rapidement votre projet.
 </p>
 
 </div>
 
-<form class="form-card" id="projectForm">
+
+<form
+class="form-card"
+id="projectForm"
+>
+
+<div class="form-intro">
+Remplissez ce formulaire pour nous présenter votre projet.
+L'envoi de votre demande est gratuit et aucun paiement
+ne vous sera demandé à cette étape.
+</div>
+
 
 <div class="form-grid">
 
 <div>
-<label for="nom">Nom et prénom *</label>
-<input id="nom" type="text" required>
+
+<label for="nom">
+Nom et prénom *
+</label>
+
+<input
+id="nom"
+type="text"
+autocomplete="name"
+required
+>
+
 </div>
 
-<div>
-<label for="entreprise">Entreprise</label>
-<input id="entreprise" type="text">
-</div>
 
 <div>
-<label for="telephone">WhatsApp / Téléphone *</label>
-<input id="telephone" type="tel" required>
+
+<label for="entreprise">
+Entreprise
+</label>
+
+<input
+id="entreprise"
+type="text"
+autocomplete="organization"
+>
+
 </div>
 
+
 <div>
-<label for="email">Adresse e-mail *</label>
-<input id="email" type="email" required>
+
+<label for="telephone">
+WhatsApp / Téléphone *
+</label>
+
+<input
+id="telephone"
+type="tel"
+autocomplete="tel"
+required
+>
+
 </div>
+
+
+<div>
+
+<label for="email">
+Adresse e-mail *
+</label>
+
+<input
+id="email"
+type="email"
+autocomplete="email"
+required
+>
+
+</div>
+
 
 <div class="full">
 
@@ -1147,14 +1677,31 @@ comprendre précisément vos besoins.
 Que souhaitez-vous créer ? *
 </label>
 
-<select id="service" required>
-<option value="">Sélectionnez votre projet</option>
-<option>Site internet</option>
-<option>Tunnel de vente</option>
-<option>Boutique en ligne</option>
+<select
+id="service"
+required
+>
+
+<option value="">
+Sélectionnez votre projet
+</option>
+
+<option>
+Site internet
+</option>
+
+<option>
+Tunnel de vente
+</option>
+
+<option>
+Boutique en ligne
+</option>
+
 </select>
 
 </div>
+
 
 <div class="full">
 
@@ -1170,6 +1717,7 @@ required
 
 </div>
 
+
 <div class="full">
 
 <label for="description">
@@ -1184,6 +1732,7 @@ required
 
 </div>
 
+
 <div>
 
 <label for="identite">
@@ -1191,12 +1740,23 @@ Logo / identité visuelle
 </label>
 
 <select id="identite">
-<option>J'ai déjà tout</option>
-<option>J'ai seulement un logo</option>
-<option>Je n'en ai pas encore</option>
+
+<option>
+J'ai déjà tout
+</option>
+
+<option>
+J'ai seulement un logo
+</option>
+
+<option>
+Je n'en ai pas encore
+</option>
+
 </select>
 
 </div>
+
 
 <div>
 
@@ -1205,15 +1765,35 @@ Budget prévu
 </label>
 
 <select id="budget">
-<option>À discuter</option>
-<option>Moins de 100 000 F CFA</option>
-<option>100 000 – 250 000 F CFA</option>
-<option>250 000 – 500 000 F CFA</option>
-<option>500 000 – 1 000 000 F CFA</option>
-<option>Plus de 1 000 000 F CFA</option>
+
+<option>
+À discuter
+</option>
+
+<option>
+Moins de 100 000 F CFA
+</option>
+
+<option>
+100 000 – 250 000 F CFA
+</option>
+
+<option>
+250 000 – 500 000 F CFA
+</option>
+
+<option>
+500 000 – 1 000 000 F CFA
+</option>
+
+<option>
+Plus de 1 000 000 F CFA
+</option>
+
 </select>
 
 </div>
+
 
 <div class="full">
 
@@ -1222,25 +1802,44 @@ Quand souhaitez-vous lancer votre projet ?
 </label>
 
 <select id="delai">
-<option>Dès que possible</option>
-<option>Dans moins de 2 semaines</option>
-<option>Dans 1 mois</option>
-<option>Dans 2 à 3 mois</option>
-<option>Je n'ai pas encore décidé</option>
+
+<option>
+Dès que possible
+</option>
+
+<option>
+Dans moins de 2 semaines
+</option>
+
+<option>
+Dans 1 mois
+</option>
+
+<option>
+Dans 2 à 3 mois
+</option>
+
+<option>
+Je n'ai pas encore décidé
+</option>
+
 </select>
 
 </div>
+
 
 <div class="full">
 
 <button
 type="submit"
-class="submit">
+class="submit"
+>
 Envoyer ma demande
 </button>
 
 <p class="form-note">
-Aucun paiement ne vous sera demandé à cette étape.
+Après l'envoi, vous recevrez votre numéro de demande Nexora
+ainsi qu'un e-mail de confirmation.
 </p>
 
 </div>
@@ -1253,7 +1852,10 @@ Aucun paiement ne vous sera demandé à cette étape.
 
 </main>
 
-<!-- FOOTER -->
+
+<!-- ==============================
+     FOOTER
+============================== -->
 
 <footer>
 
@@ -1270,37 +1872,52 @@ alt="Nexora"
 >
 
 <p>
-Création de solutions digitales sur mesure pour entrepreneurs,
-professionnels et entreprises.
+Création de solutions digitales sur mesure
+pour entrepreneurs, professionnels et entreprises.
 </p>
 
 </div>
 
+
 <div>
 
-<h4>Services</h4>
+<h4>
+Services
+</h4>
 
 <div class="footer-links">
 
-<a href="#services">Sites internet</a>
-<a href="#services">Tunnels de vente</a>
-<a href="#services">Boutiques en ligne</a>
+<a href="#services">
+Sites internet
+</a>
+
+<a href="#services">
+Tunnels de vente
+</a>
+
+<a href="#services">
+Boutiques en ligne
+</a>
 
 </div>
+
 </div>
+
 
 <div>
 
-<h4>Nexora</h4>
+<h4>
+Nexora
+</h4>
 
 <div class="footer-links">
 
 <a href="#fonctionnement">
-Notre méthode
+Comment ça fonctionne
 </a>
 
 <a href="#commander">
-Expliquer mon projet
+Démarrer un projet
 </a>
 
 <a href="suivi.html">
@@ -1308,18 +1925,23 @@ Suivre ma demande
 </a>
 
 </div>
+
 </div>
 
 </div>
+
 
 <div class="copyright">
-©️ 2026 Nexora — Tous droits réservés.
+© 2026 Nexora — Tous droits réservés.
 </div>
 
 </div>
 </footer>
 
-<!-- CONFIRMATION APRÈS ENVOI -->
+
+<!-- ==============================
+     CONFIRMATION APRÈS ENVOI
+============================== -->
 
 <div
 class="success-modal"
@@ -1343,6 +1965,7 @@ Demande envoyée avec succès
 Votre demande a bien été enregistrée par Nexora.
 </p>
 
+
 <div class="request-box">
 
 <span>
@@ -1353,6 +1976,7 @@ VOTRE NUMÉRO DE DEMANDE
 </strong>
 
 </div>
+
 
 <div class="keep-number">
 
@@ -1365,33 +1989,39 @@ Copiez-le et gardez-le dans vos notes ou dans un endroit sûr.
 
 </div>
 
+
 <div class="success-actions">
 
 <button
 type="button"
 class="copy-button"
-id="copyRequestNumber">
+id="copyRequestNumber"
+>
 Copier le numéro
 </button>
 
 <a
 href="suivi.html"
 class="track-button"
-id="trackRequest">
+id="trackRequest"
+>
 Suivre ma demande
 </a>
 
 </div>
 
+
 <button
 type="button"
 class="close-success"
-id="closeSuccess">
+id="closeSuccess"
+>
 Fermer
 </button>
 
 </div>
 </div>
+
 
 <script>
 
@@ -1466,7 +2096,10 @@ const numeroDemande =
 "NX-" +
 Date.now().toString().slice(-8) +
 "-" +
-Math.floor(100 + Math.random() * 900);
+Math.floor(
+100 +
+Math.random() * 900
+);
 
 
 submitButton.disabled =
@@ -1480,7 +2113,8 @@ try{
 
 const response =
 await fetch(
-SUPABASE_URL + "/rest/v1/Demandes",
+SUPABASE_URL +
+"/rest/v1/Demandes",
 {
 
 method:"POST",
@@ -1491,7 +2125,8 @@ headers:{
 SUPABASE_KEY,
 
 "Authorization":
-"Bearer " + SUPABASE_KEY,
+"Bearer " +
+SUPABASE_KEY,
 
 "Content-Type":
 "application/json",
@@ -1555,7 +2190,9 @@ console.error(
 erreur
 );
 
-throw new Error(erreur);
+throw new Error(
+erreur
+);
 
 }
 
@@ -1563,26 +2200,36 @@ throw new Error(erreur);
 /* SUCCÈS */
 
 document
-.getElementById("successRequestNumber")
+.getElementById(
+"successRequestNumber"
+)
 .textContent =
 numeroDemande;
 
 
 document
-.getElementById("trackRequest")
+.getElementById(
+"trackRequest"
+)
 .href =
 "suivi.html?numero=" +
-encodeURIComponent(numeroDemande);
+encodeURIComponent(
+numeroDemande
+);
 
 
 document
-.getElementById("copyRequestNumber")
+.getElementById(
+"copyRequestNumber"
+)
 .textContent =
 "Copier le numéro";
 
 
 document
-.getElementById("successModal")
+.getElementById(
+"successModal"
+)
 .style.display =
 "flex";
 
@@ -1619,7 +2266,9 @@ submitButton.textContent =
 ======================================== */
 
 document
-.getElementById("copyRequestNumber")
+.getElementById(
+"copyRequestNumber"
+)
 .addEventListener(
 "click",
 async function(){
@@ -1629,7 +2278,9 @@ this;
 
 const numero =
 document
-.getElementById("successRequestNumber")
+.getElementById(
+"successRequestNumber"
+)
 .textContent;
 
 
@@ -1642,7 +2293,9 @@ numero
 }catch(error){
 
 const zone =
-document.createElement("textarea");
+document.createElement(
+"textarea"
+);
 
 zone.value =
 numero;
@@ -1681,13 +2334,17 @@ button.textContent =
 ======================================== */
 
 document
-.getElementById("closeSuccess")
+.getElementById(
+"closeSuccess"
+)
 .addEventListener(
 "click",
 function(){
 
 document
-.getElementById("successModal")
+.getElementById(
+"successModal"
+)
 .style.display =
 "none";
 
@@ -1695,12 +2352,16 @@ document
 
 
 document
-.getElementById("successModal")
+.getElementById(
+"successModal"
+)
 .addEventListener(
 "click",
 function(e){
 
-if(e.target === this){
+if(
+e.target === this
+){
 
 this.style.display =
 "none";
