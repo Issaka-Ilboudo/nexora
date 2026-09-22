@@ -226,7 +226,7 @@ main{
 }
 
 /* =========================
-   5 STATUTS
+   STATUTS
 ========================= */
 
 .stats{
@@ -350,6 +350,31 @@ main{
 .info-value{
   font-size:14px;
   overflow-wrap:anywhere;
+}
+
+.quote-status-box{
+  margin-top:18px;
+  padding:14px 15px;
+  border-radius:11px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.quote-status-box.waiting{
+  background:#fff8e8;
+  border:1px solid #ead39a;
+  color:#775400;
+}
+
+.quote-status-box.accepted{
+  background:#edf8ef;
+  border:1px solid #b7dfbf;
+  color:var(--green);
+}
+
+.quote-status-box strong{
+  display:block;
+  margin-bottom:3px;
 }
 
 .card-actions{
@@ -562,6 +587,12 @@ main{
 .quote-submit:disabled{
   opacity:.6;
   cursor:not-allowed;
+}
+
+.auto-note{
+  font-size:11px;
+  color:#888;
+  margin-top:6px;
 }
 
 /* =========================
@@ -823,12 +854,14 @@ Aucune demande trouvée.
 <div class="modal-content">
 
 <div class="modal-top">
+
 <div>
 <span class="eyebrow">Nexora</span>
 <h2>Créer un devis</h2>
 </div>
 
 <button class="close" id="closeQuoteModal">×</button>
+
 </div>
 
 <div class="quote-intro">
@@ -836,30 +869,51 @@ Aucune demande trouvée.
 <span id="quoteRequestNumber"></span>
 </div>
 
+
 <form id="quoteForm">
 
 <input type="hidden" id="quoteRequestId">
 
+
 <div class="form-grid">
 
 <div class="field">
-<label for="quoteTotal">Montant total</label>
+
+<label for="quoteTotal">
+Montant total
+</label>
+
 <input
 type="number"
 id="quoteTotal"
 min="0"
 step="0.01"
 required
-placeholder="Exemple : 1000">
+placeholder="Exemple : 100000">
+
 </div>
 
+
 <div class="field">
-<label for="quoteCurrency">Devise</label>
+
+<label for="quoteCurrency">
+Devise
+</label>
 
 <select id="quoteCurrency" required>
-<option value="XOF">F CFA (XOF)</option>
-<option value="EUR">Euro (EUR)</option>
-<option value="USD">Dollar US (USD)</option>
+
+<option value="XOF">
+F CFA (XOF)
+</option>
+
+<option value="EUR">
+Euro (EUR)
+</option>
+
+<option value="USD">
+Dollar US (USD)
+</option>
+
 </select>
 
 </div>
@@ -870,44 +924,102 @@ placeholder="Exemple : 1000">
 <div class="amount-summary">
 
 <div class="amount-box">
-<span>Montant total</span>
-<strong id="totalPreview">0 F CFA</strong>
+
+<span>
+Montant total
+</span>
+
+<strong id="totalPreview">
+0 F CFA
+</strong>
+
 </div>
+
 
 <div class="amount-box acompte">
-<span>Acompte 50 %</span>
-<strong id="depositPreview">0 F CFA</strong>
+
+<span>
+Acompte 50 %
+</span>
+
+<strong id="depositPreview">
+0 F CFA
+</strong>
+
 </div>
 
+
 <div class="amount-box">
-<span>Solde 50 %</span>
-<strong id="balancePreview">0 F CFA</strong>
+
+<span>
+Solde 50 %
+</span>
+
+<strong id="balancePreview">
+0 F CFA
+</strong>
+
 </div>
 
 </div>
 
 
 <div class="field">
+
 <label for="quoteDescription">
 Description / prestations prévues
 </label>
 
 <textarea
 id="quoteDescription"
-required
-placeholder="Décrivez précisément ce que Nexora réalisera pour ce client."></textarea>
+required></textarea>
+
+<div class="auto-note">
+Cette description est préparée automatiquement selon le service. Vous pouvez la modifier avant l'envoi.
+</div>
+
 </div>
 
 
 <div class="field">
-<label for="quotePaymentInstructions">
+
+<label for="paymentType">
 Instructions de paiement
+</label>
+
+<select id="paymentType" required>
+
+<option value="afrique">
+Client Afrique — Mobile Money
+</option>
+
+<option value="europe">
+Client Europe — Taptap Send
+</option>
+
+<option value="personnalise">
+Instructions personnalisées
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label for="quotePaymentInstructions">
+Instructions envoyées au client
 </label>
 
 <textarea
 id="quotePaymentInstructions"
-required
-placeholder="Écrivez ici vous-même les coordonnées ou le moyen de paiement à utiliser pour ce client."></textarea>
+required></textarea>
+
+<div class="auto-note">
+Le texte peut être modifié manuellement avant la création du devis.
+</div>
+
 </div>
 
 
@@ -915,10 +1027,17 @@ placeholder="Écrivez ici vous-même les coordonnées ou le moyen de paiement à
 Le client devra régler 50 % du montant total avant le démarrage du projet. Les 50 % restants seront dus à la fin du projet.
 </p>
 
+
 <div id="quoteMessage" class="quote-message"></div>
 
-<button type="submit" class="quote-submit" id="quoteSubmitButton">
+
+<button
+type="submit"
+class="quote-submit"
+id="quoteSubmitButton">
+
 Créer le devis
+
 </button>
 
 </form>
@@ -1008,13 +1127,29 @@ document.getElementById("quoteTotal");
 const quoteCurrency =
 document.getElementById("quoteCurrency");
 
+const paymentType =
+document.getElementById("paymentType");
+
+const quoteDescription =
+document.getElementById("quoteDescription");
+
+const quotePaymentInstructions =
+document.getElementById(
+"quotePaymentInstructions"
+);
+
 const quoteSubmitButton =
-document.getElementById("quoteSubmitButton");
+document.getElementById(
+"quoteSubmitButton"
+);
 
 const quoteMessage =
-document.getElementById("quoteMessage");
+document.getElementById(
+"quoteMessage"
+);
 
 let requests = [];
+let quotes = [];
 
 
 /* ==============================
@@ -1128,7 +1263,7 @@ await loadRequests();
 
 
 /* ==============================
-   CHARGER DEMANDES
+   CHARGER DEMANDES + DEVIS
 ============================== */
 
 async function loadRequests(){
@@ -1139,18 +1274,39 @@ requestsContainer.innerHTML =
 emptyMessage.style.display =
 "none";
 
-const { data,error } =
-await db
+
+const [
+requestResult,
+quoteResult
+] =
+await Promise.all([
+
+db
 .from("Demandes")
 .select("*")
 .order(
 "created_at",
 {ascending:false}
+),
+
+db
+.from("Devis")
+.select(
+"id,created_at,numero_devis,numero_demande,accepte,accepte_le,statut"
+)
+.order(
+"created_at",
+{ascending:false}
+)
+
+]);
+
+
+if(requestResult.error){
+
+console.error(
+requestResult.error
 );
-
-if(error){
-
-console.error(error);
 
 requestsContainer.innerHTML =
 '<div class="empty">Impossible de charger les demandes.</div>';
@@ -1158,8 +1314,25 @@ requestsContainer.innerHTML =
 return;
 }
 
+
+if(quoteResult.error){
+
+console.error(
+quoteResult.error
+);
+
+quotes = [];
+
+}else{
+
+quotes =
+quoteResult.data || [];
+
+}
+
+
 requests =
-data || [];
+requestResult.data || [];
 
 updateStats();
 
@@ -1171,7 +1344,100 @@ requests
 
 
 /* ==============================
-   5 COMPTEURS
+   DERNIER DEVIS
+============================== */
+
+function getLatestQuote(
+numeroDemande
+){
+
+return quotes.find(
+quote =>
+quote.numero_demande ===
+numeroDemande
+) || null;
+
+}
+
+
+/* ==============================
+   AFFICHAGE ÉTAT DEVIS
+============================== */
+
+function quoteStatusHtml(
+item
+){
+
+const quote =
+getLatestQuote(
+item.numero_demande
+);
+
+if(!quote){
+return "";
+}
+
+
+if(quote.accepte){
+
+const acceptedDate =
+quote.accepte_le
+?
+new Date(
+quote.accepte_le
+).toLocaleString(
+"fr-FR"
+)
+:
+"Date non disponible";
+
+return `
+
+<div class="quote-status-box accepted">
+
+<strong>
+Devis accepté
+</strong>
+
+${escapeHtml(
+quote.numero_devis || ""
+)}
+
+<br>
+
+Accepté le
+${escapeHtml(
+acceptedDate
+)}
+
+</div>
+
+`;
+
+}
+
+
+return `
+
+<div class="quote-status-box waiting">
+
+<strong>
+En attente d'acceptation
+</strong>
+
+${escapeHtml(
+quote.numero_devis || ""
+)}
+
+</div>
+
+`;
+
+}
+
+
+/* ==============================
+   COMPTEURS
 ============================== */
 
 function updateStats(){
@@ -1333,6 +1599,7 @@ ${escapeHtml(item.entreprise || "-")}
 
 </div>
 
+${quoteStatusHtml(item)}
 
 <div class="card-actions">
 
@@ -1616,33 +1883,116 @@ if(!item){
 return;
 }
 
+const quote =
+getLatestQuote(
+item.numero_demande
+);
+
+let quoteDetails = "";
+
+if(quote){
+
+quoteDetails +=
+detail(
+"Numéro du dernier devis",
+quote.numero_devis
+);
+
+quoteDetails +=
+detail(
+"Acceptation du devis",
+quote.accepte
+?
+"Accepté"
+:
+"En attente d'acceptation"
+);
+
+if(
+quote.accepte &&
+quote.accepte_le
+){
+
+quoteDetails +=
+detail(
+"Date d'acceptation",
+new Date(
+quote.accepte_le
+).toLocaleString(
+"fr-FR"
+)
+);
+
+}
+
+}
+
+
 document
 .getElementById("modalBody")
 .innerHTML =
 
-detail("Numéro de demande",item.numero_demande)
+detail(
+"Numéro de demande",
+item.numero_demande
+)
 +
-detail("Client",item.nom)
+detail(
+"Client",
+item.nom
+)
 +
-detail("Entreprise",item.entreprise)
+detail(
+"Entreprise",
+item.entreprise
+)
 +
-detail("Téléphone / WhatsApp",item.telephone)
+detail(
+"Téléphone / WhatsApp",
+item.telephone
+)
 +
-detail("E-mail",item.email)
+detail(
+"E-mail",
+item.email
+)
 +
-detail("Service",item.service)
+detail(
+"Service",
+item.service
+)
 +
-detail("Objectif",item.objectif)
+detail(
+"Objectif",
+item.objectif
+)
 +
-detail("Description du projet",item.description)
+detail(
+"Description du projet",
+item.description
+)
 +
-detail("Identité / Logo",item.identite_logo)
+detail(
+"Identité / Logo",
+item.identite_logo
+)
 +
-detail("Budget",item.budget)
+detail(
+"Budget",
+item.budget
+)
 +
-detail("Délai",item.delai)
+detail(
+"Délai",
+item.delai
+)
 +
-detail("Statut",item.statut);
+detail(
+"Statut",
+item.statut
+)
++
+quoteDetails;
 
 detailsModal.style.display =
 "block";
@@ -1675,6 +2025,138 @@ ${escapeHtml(value || "-")}
 
 
 /* ==============================
+   DESCRIPTION AUTOMATIQUE
+============================== */
+
+function getAutomaticDescription(
+service
+){
+
+const normalized =
+String(service || "")
+.toLowerCase();
+
+
+if(
+normalized.includes("boutique")
+){
+
+return `Création et mise en place d'une boutique en ligne professionnelle adaptée à votre activité.
+
+Prestations prévues :
+- Conception et configuration de la boutique
+- Présentation professionnelle de vos produits ou services
+- Adaptation du site aux téléphones, tablettes et ordinateurs
+- Mise en place des éléments nécessaires au parcours client
+- Configuration et vérifications avant la mise en ligne
+- Accompagnement pour la prise en main de votre boutique`;
+
+}
+
+
+if(
+normalized.includes("tunnel")
+){
+
+return `Création et mise en place d'un tunnel de vente professionnel adapté à votre offre.
+
+Prestations prévues :
+- Conception du parcours de vente
+- Création des différentes étapes du tunnel
+- Présentation claire de votre offre
+- Optimisation du parcours client
+- Adaptation aux téléphones, tablettes et ordinateurs
+- Configuration et vérifications avant la mise en ligne`;
+
+}
+
+
+if(
+normalized.includes("site")
+){
+
+return `Création d'un site internet professionnel adapté à votre activité et à votre image.
+
+Prestations prévues :
+- Conception et mise en page du site
+- Présentation de votre activité, de vos services et de vos informations essentielles
+- Adaptation du site aux téléphones, tablettes et ordinateurs
+- Mise en place des éléments de contact
+- Configuration et vérifications avant la mise en ligne
+- Accompagnement pour la prise en main du site`;
+
+}
+
+
+return `Réalisation de la prestation digitale demandée par le client.
+
+Prestations prévues :
+- Analyse du besoin
+- Conception de la solution
+- Mise en place des éléments nécessaires au projet
+- Adaptation aux différents appareils
+- Vérifications avant livraison
+- Accompagnement pour la prise en main`;
+
+}
+
+
+/* ==============================
+   INSTRUCTIONS PAIEMENT
+============================== */
+
+function updatePaymentInstructions(){
+
+if(
+paymentType.value ===
+"afrique"
+){
+
+quotePaymentInstructions.value =
+`Pour régler l'acompte de 50 %, vous pouvez utiliser l'un des moyens suivants :
+
+Orange Money ou Wave :
++226 75 86 30 37
+
+Moov Money :
++226 03 24 79 49
+
+Veuillez utiliser le numéro correspondant au moyen de paiement choisi.`;
+
+return;
+}
+
+
+if(
+paymentType.value ===
+"europe"
+){
+
+quotePaymentInstructions.value =
+`Pour régler l'acompte de 50 % depuis l'Europe, utilisez l'application Taptap Send.
+
+Choisissez un transfert vers Orange Money Burkina Faso et envoyez le montant au :
+
++226 75 86 30 37`;
+
+return;
+}
+
+
+if(
+paymentType.value ===
+"personnalise"
+){
+
+quotePaymentInstructions.value =
+"";
+
+}
+
+}
+
+
+/* ==============================
    OUVRIR CRÉATION DEVIS
 ============================== */
 
@@ -1694,24 +2176,44 @@ return;
 quoteForm.reset();
 
 document
-.getElementById("quoteRequestId")
+.getElementById(
+"quoteRequestId"
+)
 .value =
 String(item.id);
 
 document
-.getElementById("quoteClientName")
+.getElementById(
+"quoteClientName"
+)
 .textContent =
 item.nom || "Client";
 
 document
-.getElementById("quoteRequestNumber")
+.getElementById(
+"quoteRequestNumber"
+)
 .textContent =
 (item.numero_demande || "-") +
 " — " +
 (item.service || "Service non précisé");
 
+
 quoteCurrency.value =
 "XOF";
+
+paymentType.value =
+"afrique";
+
+
+quoteDescription.value =
+getAutomaticDescription(
+item.service
+);
+
+
+updatePaymentInstructions();
+
 
 quoteMessage.className =
 "quote-message";
@@ -1719,12 +2221,24 @@ quoteMessage.className =
 quoteMessage.textContent =
 "";
 
+
 updateQuoteAmounts();
+
 
 quoteModal.style.display =
 "block";
 
 }
+
+
+/* ==============================
+   CHANGEMENT TYPE PAIEMENT
+============================== */
+
+paymentType.addEventListener(
+"change",
+updatePaymentInstructions
+);
 
 
 /* ==============================
@@ -1787,21 +2301,27 @@ const currency =
 getCurrencyLabel();
 
 document
-.getElementById("totalPreview")
+.getElementById(
+"totalPreview"
+)
 .textContent =
 formatAmount(total) +
 " " +
 currency;
 
 document
-.getElementById("depositPreview")
+.getElementById(
+"depositPreview"
+)
 .textContent =
 formatAmount(deposit) +
 " " +
 currency;
 
 document
-.getElementById("balancePreview")
+.getElementById(
+"balancePreview"
+)
 .textContent =
 formatAmount(balance) +
 " " +
@@ -1861,16 +2381,21 @@ async function(e){
 
 e.preventDefault();
 
+
 quoteMessage.className =
 "quote-message";
 
 quoteMessage.textContent =
 "";
 
+
 const requestId =
 document
-.getElementById("quoteRequestId")
+.getElementById(
+"quoteRequestId"
+)
 .value;
+
 
 const item =
 requests.find(
@@ -1878,6 +2403,7 @@ x =>
 String(x.id) ===
 String(requestId)
 );
+
 
 if(!item){
 
@@ -1895,6 +2421,7 @@ const total =
 Number(
 quoteTotal.value
 );
+
 
 if(
 !Number.isFinite(total) ||
@@ -1916,22 +2443,24 @@ Math.round(
 (total / 2) * 100
 ) / 100;
 
+
 const balance =
 Math.round(
 (total - deposit) * 100
 ) / 100;
 
+
 const description =
-document
-.getElementById("quoteDescription")
+quoteDescription
 .value
 .trim();
 
+
 const paymentInstructions =
-document
-.getElementById("quotePaymentInstructions")
+quotePaymentInstructions
 .value
 .trim();
+
 
 if(
 !description ||
@@ -2032,20 +2561,14 @@ quoteMessage.textContent =
 numeroDevis +
 " créé avec succès.";
 
-quoteTotal.value =
-"";
 
-document
-.getElementById("quoteDescription")
-.value =
-"";
+/*
+On recharge les données pour que
+le nouveau devis apparaisse immédiatement
+dans l'administration.
+*/
 
-document
-.getElementById("quotePaymentInstructions")
-.value =
-"";
-
-updateQuoteAmounts();
+await loadRequests();
 
 });
 
@@ -2221,7 +2744,9 @@ return;
 
 
 if(session){
+
 await db.auth.signOut();
+
 }
 
 
