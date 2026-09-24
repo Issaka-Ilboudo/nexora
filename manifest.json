@@ -1,0 +1,19 @@
+{
+  "name": "Nexora",
+  "short_name": "Nexora",
+  "description": "Nexora — Solutions digitales pour sites internet, boutiques en ligne et tunnels de vente.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-nexora.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
