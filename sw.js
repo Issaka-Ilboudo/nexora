@@ -1,4 +1,4 @@
-const CACHE_NAME = "nexora-v1";
+const CACHE_NAME = "nexora-v2";
 
 const FILES_TO_CACHE = [
   "./",
