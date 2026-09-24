@@ -193,6 +193,31 @@ nav a{
   font-size:12px;
 }
 
+/* INSTALLATION NEXORA */
+
+.install-area{
+  margin-top:18px;
+}
+
+.install-app-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:11px 18px;
+  border:1px solid #6a5423;
+  border-radius:8px;
+  background:transparent;
+  color:var(--gold2);
+  font-size:13px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.install-app-button:hover{
+  background:#17140d;
+}
+
 .hero-panel{
   border:1px solid #292929;
   background:linear-gradient(145deg,#151515,#090909);
@@ -799,6 +824,76 @@ textarea{
 }
 
 /* ==============================
+   MODALE INSTALLATION
+============================== */
+
+.install-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:rgba(0,0,0,.84);
+  padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.install-card{
+  width:100%;
+  max-width:440px;
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  text-align:center;
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+}
+
+.install-icon{
+  width:82px;
+  height:82px;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+  margin:0 auto 18px;
+}
+
+.install-card h2{
+  font-size:25px;
+  line-height:1.2;
+  margin-bottom:10px;
+}
+
+.install-card p{
+  color:#6f6f6f;
+  font-size:14px;
+  line-height:1.65;
+}
+
+.install-instructions{
+  margin:20px 0;
+  background:#faf7ef;
+  border:1px solid #eee2c5;
+  border-radius:12px;
+  padding:17px;
+  text-align:left;
+  color:#4d421f;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.install-close{
+  width:100%;
+  border:0;
+  border-radius:9px;
+  background:#090909;
+  color:#fff;
+  padding:14px;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ==============================
    FOOTER
 ============================== */
 
@@ -991,6 +1086,17 @@ footer h4{
     min-height:49px;
   }
 
+  .install-area{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+  }
+
+  .install-app-button{
+    width:100%;
+    min-height:47px;
+  }
+
   .hero-note{
     text-align:center;
     margin-top:15px;
@@ -1118,6 +1224,10 @@ footer h4{
   .success-actions{
     grid-template-columns:1fr;
   }
+
+  .install-card{
+    padding:25px 18px;
+  }
 }
 </style>
 </head>
@@ -1190,6 +1300,20 @@ Expliquer mon projet
 <a href="suivi.html" class="btn btn-dark">
 Suivre ma demande
 </a>
+
+</div>
+
+<!-- INSTALLER NEXORA -->
+
+<div class="install-area" id="installArea">
+
+<button
+type="button"
+class="install-app-button"
+id="installAppButton"
+>
+Installer Nexora
+</button>
 
 </div>
 
@@ -2096,6 +2220,51 @@ Fermer
 </div>
 </div>
 
+<!-- ==============================
+     INSTALLATION NEXORA
+============================== -->
+
+<div
+class="install-modal"
+id="installModal"
+role="dialog"
+aria-modal="true"
+aria-labelledby="installTitle"
+>
+
+<div class="install-card">
+
+<img
+src="icon-nexora.png"
+alt="Nexora"
+class="install-icon"
+>
+
+<h2 id="installTitle">
+Installer Nexora
+</h2>
+
+<p id="installMessage">
+Ajoutez Nexora à votre écran d'accueil pour l'utiliser comme une application.
+</p>
+
+<div
+class="install-instructions"
+id="installInstructions"
+>
+</div>
+
+<button
+type="button"
+class="install-close"
+id="closeInstall"
+>
+Fermer
+</button>
+
+</div>
+</div>
+
 <script>
 
 /* ========================================
@@ -2396,35 +2565,220 @@ this.style.display =
 });
 
 /* ========================================
-   APPLICATION NEXORA — PWA
+   INSTALLATION NEXORA
+======================================== */
+
+let deferredInstallPrompt = null;
+
+const installArea =
+document.getElementById("installArea");
+
+const installAppButton =
+document.getElementById("installAppButton");
+
+const installModal =
+document.getElementById("installModal");
+
+const installInstructions =
+document.getElementById("installInstructions");
+
+const closeInstall =
+document.getElementById("closeInstall");
+
+const isIOS =
+/iphone|ipad|ipod/i.test(
+navigator.userAgent
+);
+
+const isStandalone =
+window.matchMedia(
+"(display-mode: standalone)"
+).matches ||
+window.navigator.standalone === true;
+
+
+/* APPLICATION DÉJÀ INSTALLÉE */
+
+if(isStandalone){
+
+installArea.style.display =
+"none";
+
+}
+
+
+/* ANDROID / CHROME :
+   CONSERVE L'INVITATION D'INSTALLATION */
+
+window.addEventListener(
+"beforeinstallprompt",
+function(event){
+
+event.preventDefault();
+
+deferredInstallPrompt =
+event;
+
+if(!isStandalone){
+
+installArea.style.display =
+"block";
+
+}
+
+}
+);
+
+
+/* CLIC SUR INSTALLER NEXORA */
+
+installAppButton.addEventListener(
+"click",
+async function(){
+
+if(isStandalone){
+
+installArea.style.display =
+"none";
+
+return;
+
+}
+
+
+/* IPHONE / IPAD */
+
+if(isIOS){
+
+installInstructions.innerHTML =
+"<strong>Sur iPhone ou iPad :</strong><br><br>" +
+"1. Appuyez sur le bouton <strong>Partager</strong> de votre navigateur.<br><br>" +
+"2. Choisissez <strong>Ajouter à l’écran d’accueil</strong>.<br><br>" +
+"3. Appuyez ensuite sur <strong>Ajouter</strong>.<br><br>" +
+"Si cette option n’apparaît pas, ouvrez Nexora dans Safari puis recommencez.";
+
+installModal.style.display =
+"flex";
+
+return;
+
+}
+
+
+/* ANDROID AVEC INVITATION DISPONIBLE */
+
+if(deferredInstallPrompt){
+
+deferredInstallPrompt.prompt();
+
+const result =
+await deferredInstallPrompt.userChoice;
+
+deferredInstallPrompt =
+null;
+
+if(result.outcome === "accepted"){
+
+installArea.style.display =
+"none";
+
+}
+
+return;
+
+}
+
+
+/* ANDROID SI LE NAVIGATEUR
+   NE FOURNIT PLUS L'INVITATION */
+
+installInstructions.innerHTML =
+"<strong>Sur Android :</strong><br><br>" +
+"1. Ouvrez le menu de votre navigateur.<br><br>" +
+"2. Choisissez <strong>Installer l’application</strong> ou <strong>Ajouter à l’écran d’accueil</strong>.<br><br>" +
+"3. Confirmez l’installation de Nexora.";
+
+installModal.style.display =
+"flex";
+
+}
+);
+
+
+/* FERMER LA FENÊTRE INSTALLATION */
+
+closeInstall.addEventListener(
+"click",
+function(){
+
+installModal.style.display =
+"none";
+
+}
+);
+
+installModal.addEventListener(
+"click",
+function(e){
+
+if(e.target === this){
+
+this.style.display =
+"none";
+
+}
+
+}
+);
+
+
+/* INSTALLATION TERMINÉE */
+
+window.addEventListener(
+"appinstalled",
+function(){
+
+deferredInstallPrompt =
+null;
+
+installArea.style.display =
+"none";
+
+}
+);
+
+
+/* ========================================
+   SERVICE WORKER NEXORA
 ======================================== */
 
 if ("serviceWorker" in navigator) {
 
-  window.addEventListener(
-  "load",
-  function(){
+window.addEventListener(
+"load",
+function(){
 
-    navigator.serviceWorker
-    .register("./sw.js")
-    .then(function(registration){
+navigator.serviceWorker
+.register("./sw.js")
+.then(function(registration){
 
-      console.log(
-        "Application Nexora prête.",
-        registration.scope
-      );
+console.log(
+"Application Nexora prête.",
+registration.scope
+);
 
-    })
-    .catch(function(error){
+})
+.catch(function(error){
 
-      console.error(
-        "Erreur Service Worker :",
-        error
-      );
+console.error(
+"Erreur Service Worker :",
+error
+);
 
-    });
+});
 
-  });
+}
+);
 
 }
 
